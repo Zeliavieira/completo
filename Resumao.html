@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz Sistema Reprodutor Feminino</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fce4ec;
+      padding: 20px;
+    }
+    .quiz-container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      max-width: 700px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #c2185b;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h2 {
+      font-size: 20px;
+      color: #880e4f;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 8px 0;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #f8bbd0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .options button:hover {
+      background: #f48fb1;
+    }
+    .correct {
+      background: #c8e6c9 !important;
+    }
+    .wrong {
+      background: #ffcdd2 !important;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <h1>Quiz Sistema Reprodutor Feminino</h1>
+  <div id="quiz"></div>
+</div>
+
+<script>
+const questions = [
+  {
+    question: "Qual parte do sistema reprodutor feminino conecta o útero ao exterior?",
+    options: ["Ovário", "Trompa de Falópio", "Vagina", "Clitóris"],
+    answer: 2
+  },
+  {
+    question: "Qual é o órgão externo responsável pelo prazer feminino?",
+    options: ["Vagina", "Clitóris", "Lábios maiores", "Útero"],
+    answer: 1
+  },
+  {
+    question: "O que significa a sigla PSMI?",
+    options: ["Programa de Saúde Materno Infantil", "Programa de Saúde da Mulher Integrada", "Programa de Saúde Mental Infantil", "Programa de Saúde Maternidade Integral"],
+    answer: 0
+  },
+  {
+    question: "O que é o PAISM?",
+    options: ["Plano de Ação para Saúde Masculina", "Programa de Atenção Integral à Saúde da Mulher", "Projeto de Atendimento Infantil Saúde da Mulher", "Programa de Acompanhamento Intensivo da Saúde Materna"],
+    answer: 1
+  },
+  {
+    question: "Sobre o PNAISM, é correto dizer que:",
+    options: ["Foca apenas em gravidez", "É voltado à saúde integral da mulher em todas as fases", "É um plano hospitalar", "É apenas para idosas"],
+    answer: 1
+  },
+  {
+    question: "Direitos Sexuais garantem:",
+    options: ["A liberdade para viver a sexualidade com respeito e segurança", "A liberdade para não seguir nenhuma regra", "Obrigação de casar", "Obrigação de engravidar"],
+    answer: 0
+  },
+  {
+    question: "Direitos Reprodutivos garantem:",
+    options: ["Obrigação de ter filhos", "Decidir livremente se quer ter filhos ou não", "Obrigação de engravidar aos 18", "Obrigação de casar"],
+    answer: 1
+  },
+  {
+    question: "Qual é a importância do preventivo ginecológico?",
+    options: ["Detectar precocemente alterações no colo do útero", "Evitar gravidez", "Aumentar a fertilidade", "Tratar doenças cardíacas"],
+    answer: 0
+  },
+  {
+    question: "O exame das mamas tem como objetivo principal:",
+    options: ["Detectar câncer de mama precocemente", "Corrigir assimetrias", "Emagrecer", "Evitar cólicas"],
+    answer: 0
+  },
+  {
+    question: "A inspeção da genitália feminina serve para:",
+    options: ["Avaliar alterações visuais", "Estimular a ovulação", "Reduzir o fluxo menstrual", "Alterar hormônios"],
+    answer: 0
+  },
+  {
+    question: "A coleta de material cérvico-uterino é feita para:",
+    options: ["Diagnosticar câncer do colo do útero", "Corrigir a posição uterina", "Aumentar a fertilidade", "Evitar TPM"],
+    answer: 0
+  },
+  {
+    question: "Qual hormônio é responsável pela ovulação?",
+    options: ["Progesterona", "Estrogênio", "LH (Hormônio Luteinizante)", "Prolactina"],
+    answer: 2
+  },
+  {
+    question: "Quando inicia um ciclo menstrual?",
+    options: ["No 1º dia da ovulação", "No 1º dia da menstruação", "No 15º dia do mês", "Quando a mulher quer"],
+    answer: 1
+  },
+  {
+    question: "Amenorreia é:",
+    options: ["Aumento do fluxo menstrual", "Dores menstruais", "Ausência de menstruação", "Menstruação irregular"],
+    answer: 2
+  },
+  {
+    question: "Dismenorreia é:",
+    options: ["Ausência de menstruação", "Dores menstruais", "Menstruação adiantada", "Gravidez precoce"],
+    answer: 1
+  },
+  {
+    question: "Ovulação ocorre quando:",
+    options: ["O óvulo é liberado pelos ovários", "A mulher menstrua", "A gravidez termina", "A mulher para de menstruar"],
+    answer: 0
+  },
+  {
+    question: "Fecundação ocorre quando:",
+    options: ["O óvulo é liberado", "O espermatozoide encontra o óvulo", "A menstruação inicia", "O útero cresce"],
+    answer: 1
+  }
+];
+
+const quiz = document.getElementById('quiz');
+
+questions.forEach((q, index) => {
+  const questionDiv = document.createElement('div');
+  questionDiv.classList.add('question');
+  questionDiv.innerHTML = `<h2>${index + 1}. ${q.question}</h2>`;
+
+  const optionsDiv = document.createElement('div');
+  optionsDiv.classList.add('options');
+
+  q.options.forEach((option, i) => {
+    const button = document.createElement('button');
+    button.textContent = option;
+    button.addEventListener('click', () => {
+      if(i === q.answer) {
+        button.classList.add('correct');
+      } else {
+        button.classList.add('wrong');
+      }
+      const buttons = button.parentElement.querySelectorAll('button');
+      buttons.forEach(btn => btn.disabled = true);
+    });
+    optionsDiv.appendChild(button);
+  });
+
+  questionDiv.appendChild(optionsDiv);
+  quiz.appendChild(questionDiv);
+});
+</script>
+
+</body>
+</html>

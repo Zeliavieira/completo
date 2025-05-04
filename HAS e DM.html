@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Casos Clínicos - HAS e DM</title>
+  <style>
+
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #3498db;
+  margin-top: 20px;
+}
+
+h3 {
+  color: #2980b9;
+  margin-top: 10px;
+}
+
+.section {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+  padding-left: 20px;
+  font-size: 1.1em;
+}
+
+ul li {
+  margin: 8px 0;
+}
+
+h2, h3 {
+  font-weight: bold;
+}
+
+p {
+  font-size: 1.1em;
+}
+
+section ul li {
+  margin: 10px 0;
+}
+
+section ul {
+  font-size: 1.1em;
+}
+
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f8f5;
+      margin: 0;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      background: white;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    h2 {
+      color: #2e7d32;
+    }
+    .tema {
+      background-color: #dcedc8;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    li {
+      padding: 5px 0;
+    }
+    button {
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin-top: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1b5e20;
+    }
+    .resposta {
+      display: none;
+      margin-top: 10px;
+      background: #e8f5e9;
+      padding: 10px;
+      border-left: 5px solid #4caf50;
+    }
+
+    .ficha {
+        max-width: 800px;
+      background: white;
+      margin: auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f8f5;
+      margin: 0;
+      padding: 20px;
+    }
+    .ficha h2 {
+      text-align: center;
+      color: #d14b4b;
+    }
+    .dados, .acoes {
+      margin-top: 10px;
+    }
+    .dados p, .acoes p, .frase {
+      font-size: 1.1em;
+      margin: 8px 0;
+    }
+    .tabela {
+      width: 80%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+    .tabela th, .tabela td {
+      border: 1px solid #ddd;
+      padding: 12px;
+      text-align: left;
+    }
+    .tabela th {
+      background-color: #f2f2f2;
+    }
+    .frase {
+      background: #ffeeba;
+      border-left: 5px solid #ffc107;
+      padding: 10px;
+      font-style: italic;
+      margin-top: 20px;
+    }
+    .emoji {
+      font-size: 1.4em;
+    }
+  </style>
+
+</head>
+<body>
+
+
+    <div class="container">
+        <h1>🌡️ Hipertensão Arterial Sistêmica (HAS)</h1>
+    
+        <!-- Introdução -->
+        <section class="section introducao">
+          <h2>📌 1. INTRODUÇÃO</h2>
+          <h3>🔹 Definição</h3>
+          <p>Definição: A Hipertensão Arterial Sistêmica (HAS) é uma condição clínica caracterizada por níveis elevados e sustentados da pressão arterial (PA).</p>
+
+           
+          
+          <h3>🔹 Valores de Referência</h3>
+          <ul>
+            <li>✅ PA Normal: 120/80 mmHg</li>
+            <li>⚠️ Pré-hipertensão: 120-139 / 80-89 mmHg</li>
+            <li>⚠️ Hipertensão Estágio 1: 140-159 / 90-99 mmHg</li>
+            <li>❗ Hipertensão Estágio 2: ≥160 / ≥100 mmHg</li>
+          </ul>
+        </section>
+    
+        <!-- Fisiopatologia -->
+        <section class="section fisiopatologia">
+          <h2>⚙️ 2. FISIOPATOLOGIA</h2>
+          <p>cardiaco
+
+            A pressão arterial é regulada por mecanismos nenrais, hormonais e renais
+            
+            Na HAS, ocorre um aumento da resistência vascular periféricas cou aumento do débito
+            
+            Fatores como genética, obesidade, ingestão excessiva de sõdin, sedentarismo e estresse contribuem para o desenvolvimento da HA</p>
+          
+          <h3>Fatores de risco:</h3>
+          <ul>
+            <li>🧬 Genética</li>
+            <li>⚖️ Obesidade</li>
+            <li>🧂 Ingestão excessiva de sal</li>
+            <li>🚫🏃‍♀️ Sedentarismo</li>
+            <li>😰 Estresse</li>
+          </ul>
+        </section>
+    
+        <!-- Classificação -->
+        <section class="section classificacao">
+          <h2>🧬 3. CLASSIFICAÇÃO</h2>
+          <p><strong>Primária (Essencial):</strong> Sem causa identificável. Corresponde a cerca de 90% dos casos.</p>
+          <p><strong>Secundária:</strong> Causada por outra condição clínica, como:</p>
+          <ul>
+            <li>🩺 Doenças renais</li>
+            <li>🔬 Distúrbios endócrinos</li>
+            <li>💊 Uso de medicamentos</li>
+          </ul>
+        </section>
+    
+        <!-- Sinais e Sintomas -->
+        <section class="section sinais-sintomas">
+          <h2>⚠️ 4. SINAIS E SINTOMAS</h2>
+          <p>🔇 Muitas vezes é assintomática, por isso é conhecida como "assassina silenciosa". Quando presentes, os sintomas incluem:</p>
+          <ul>
+            <li>🤕 Cefaleia</li>
+            <li>🤢 Tontura</li>
+            <li>👀 Visão turva</li>
+            <li>❤️ Palpitações</li>
+            <li>🔊 Zumbido no ouvido</li>
+          </ul>
+        </section>
+    
+        <!-- Diagnóstico -->
+        <section class="section diagnostico">
+          <h2>🧪 5. DIAGNÓSTICO</h2>
+          <p>Medição adequada da pressão arterial em momentos diferentes.</p>
+          <h3>Exames complementares:</h3>
+          <ul>
+            <li>Hemograma</li>
+            <li>Creatinina</li>
+            <li>Potássio</li>
+            <li>Colesterol</li>
+            <li>Glicemia</li>
+            <li>Eletrocardiograma (ECG) e exames de imagem, se necessário.</li>
+          </ul>
+        </section>
+    
+        <!-- Tratamento -->
+        <section class="section tratamento">
+          <h2>💊 6. TRATAMENTO</h2>
+          <h3>🧘 Mudanças no Estilo de Vida</h3>
+          <ul>
+            <li>🧂 Redução do sal na alimentação</li>
+            <li>🏃‍♀️ Prática regular de atividades físicas</li>
+            <li>⚖️ Controle do peso</li>
+            <li>🚭 Parar de fumar</li>
+            <li>🍷 Moderação no consumo de álcool</li>
+          </ul>
+          
+          <h3>💉 Tratamento Farmacológico</h3>
+          <ul>
+            <li>Diuréticos</li>
+            <li>Betabloqueadores</li>
+            <li>Inibidores da ECA</li>
+            <li>Bloqueadores de canais de cálcio</li>
+            <li>Vasodilatadores</li>
+          </ul>
+        </section>
+    
+        <!-- Complicações -->
+        <section class="section complicacoes">
+          <h2>🚨 7. COMPLICAÇÕES</h2>
+          <ul>
+            <li>🧠 AVC (Acidente Vascular Cerebral)</li>
+            <li>❤️ Infarto Agudo do Miocárdio</li>
+            <li>💔 Insuficiência Cardíaca</li>
+            <li>🩸 Nefropatia</li>
+            <li>👁️ Retinopatia Hipertensiva</li>
+          </ul>
+        </section>
+    
+        <!-- Assistência de Enfermagem -->
+        <section class="section assistencia">
+          <h2>🩺 8. ASSISTÊNCIA DE ENFERMAGEM</h2>
+          <h3>Atribuições do Profissional de Enfermagem</h3>
+          <ul>
+            <li>🩹 Monitorar e registrar a pressão arterial</li>
+            <li>💊 Orientar o paciente sobre o uso correto dos medicamentos</li>
+            <li>🍲 Orientar sobre alimentação saudável</li>
+            <li>🏃‍♀️ Promover o autocuidado</li>
+          </ul>
+    
+          <h3>Planejamento e Intervenções</h3>
+          <ul>
+            <li>📋 Estabelecer metas realistas com o paciente</li>
+            <li>💬 Incentivar a adesão ao tratamento</li>
+            <li>🧠 Monitorar sinais vitais regularmente</li>
+            <li>⚖️ Avaliar efeitos colaterais dos medicamentos</li>
+          </ul>
+        </section>
+    
+        <!-- Conclusão -->
+        <section class="section conclusao">
+          <h2>🧠 9. CONCLUSÃO</h2>
+          <p>A HAS é uma doença crônica e prevalente, que demanda cuidados contínuos e uma abordagem multiprofissional. A enfermagem tem papel essencial na prevenção, educação e no controle da doença.</p>
+        </section>
+    
+        <!-- Referências -->
+        <section class="section referencias">
+          <h2>📚 10. REFERÊNCIAS</h2>
+          <ul>
+            <li>BRUNNER & SUDDARTH. Tratado de Enfermagem Médico-Cirúrgica. 14ª ed. Rio de Janeiro: Guanabara Koogan, 2018.</li>
+            <li>SMELTZER, S. C.; BARE, B. G. Enfermagem Médico-Cirúrgica: Avaliação e Assistência ao Adulto. 13ª ed. Rio de Janeiro: Guanabara Koogan, 2014.</li>
+            <li>NETTINA, Sandra M. Manual de Enfermagem Prática. 10ª ed. Rio de Janeiro: Guanabara Koogan, 2020.</li>
+          </ul>
+        </section>
+      </div>
+
+
+
+  <div class="container">
+    <h1>📘 Casos Clínicos Interativos</h1>
+
+    <div class="tema">
+      <h2>🩺 TEMA: HAS (Hipertensão Arterial Sistêmica)</h2>
+      <p><strong>Caso:</strong> Maria Aparecida, 62 anos, fol atendida na unidade básica de saúde com quelxas de cefalela frequente e visão turva. Relata histórico de HAS há 10 anos, faz uso irregular dos medicamentos prescritos, tem dista rica em sal e é sedentáris. PA aferida no momento 166/102 mmHg. Relata também episódios de tontura pela manhã.</p>
+
+      <button onclick="mostrarResposta('resposta1')">1️⃣ Classificação da PA</button>
+      <div id="resposta1" class="resposta">➡️ A pressão 166/102 mmHg está classificada como <strong>Hipertensão Estágio 2</strong>, segundo a SBC.</div>
+
+      <button onclick="mostrarResposta('resposta2')">2️⃣ Fatores para o descontrole</button>
+      <div id="resposta2" class="resposta">
+        <ul>
+          <li>💊 Uso irregular dos remédios</li>
+          <li>🧂 Alimentação com muito sal</li>
+          <li>🚶‍♀️ Falta de atividade física</li>
+          <li>🎂 Idade avançada</li>
+          <li>🏥 Falta de acompanhamento</li>
+        </ul>
+      </div>
+
+      <button onclick="mostrarResposta('resposta3')">3️⃣ Diagnósticos de Enfermagem</button>
+      <div id="resposta3" class="resposta">
+        <ul>
+          <li>Adesão inadequada ao tratamento</li>
+          <li>Padrão de atividade física ineficaz</li>
+          <li>Nutrição desequilibrada (excesso de sódio)</li>
+          <li>Risco de complicações cardiovasculares</li>
+        </ul>
+      </div>
+
+      <button onclick="mostrarResposta('resposta4')">4️⃣ Orientações de Enfermagem</button>
+      <div id="resposta4" class="resposta">
+        <ul>
+          <li>🕐 Tomar os remédios no horário certo</li>
+          <li>🍲 Reduzir sal e evitar industrializados</li>
+          <li>👟 Fazer caminhada leve</li>
+          <li>🏥 Voltar sempre à unidade</li>
+          <li>💧 Beber água e dormir bem</li>
+          <li>🧠 Explicar os riscos da HAS silenciosa</li>
+        </ul>
+      </div>
+
+      <button onclick="mostrarResposta('resposta5')">5️⃣ Plano de Cuidados</button>
+      <div id="resposta5" class="resposta">
+        <ul>
+          <li>✅ Ensinar sobre uso regular dos medicamentos</li>
+          <li>✅ Orientar sobre dieta e atividade física</li>
+          <li>✅ Agendar retorno e reforçar vínculo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="tema">
+      <h2>🩺 TEMA: DM (Diabetes Mellitus)</h2>
+      <p><strong>Caso:</strong> Joana Angelica, 62 anos, hipertensa, compareceu à UBS com queixas de fadiga, sede excessiva e perda de peso. Durante o atendimento, fol verificada glicemia capilar de 320 mg/dL. Ela afirma que se alimenta mal, sente dificuldade em seguir dietas e não entande bem as orientações que recebe.</p>
+
+      <button onclick="mostrarResposta('resposta6')">1️⃣ Sinais de DM descompensado</button>
+      <div id="resposta6" class="resposta">
+        <ul>
+          <li>💉 Glicemia muito alta (320 mg/dL)</li>
+          <li>💧 Sede excessiva (polidipsia)</li>
+          <li>😴 Fadiga constante</li>
+          <li>⚖️ Perda de peso</li>
+        </ul>
+      </div>
+
+      <button onclick="mostrarResposta('resposta7')">2️⃣ Papel do Técnico de Enfermagem</button>
+      <div id="resposta7" class="resposta">
+        <ul>
+          <li>Aferir sinais vitais e glicemia</li>
+          <li>Comunicar alterações</li>
+          <li>Orientar com paciência</li>
+          <li>Reforçar uso da medicação</li>
+          <li>Agendar exames e retorno</li>
+          <li>Incentivar plano alimentar</li>
+        </ul>
+      </div>
+
+      <button onclick="mostrarResposta('resposta8')">3️⃣ Como orientar Joana</button>
+      <div id="resposta8" class="resposta">
+        <ul>
+          <li>Falar com calma e olhar nos olhos</li>
+          <li>Dar exemplos simples: “Evite doces, coma frutas”</li>
+          <li>Usar cartaz com alimentos permitidos</li>
+          <li>Tomar remédio todos os dias</li>
+          <li>Beber água, evitar refrigerantes</li>
+          <li>Incluir a família, se possível</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="ficha">
+    <h2>💊 FICHA VISUAL – MARIA (Hipertensão - HAS)</h2>
+    <div class="dados">
+      <p>👵 <strong>Nome:</strong> Maria Aparecida</p>
+      <p>📅 <strong>Idade:</strong> 62 anos</p>
+      <p>📏 <strong>Pressão:</strong> 166/102 mmHg</p>
+      <p>💊 Toma remédio irregularmente</p>
+      <p>🍟 Come muito sal</p>
+      <p>🚫 Não faz atividade física</p>
+      <p>😵‍💫 Tem dor de cabeça, visão embaçada e tontura</p>
+    </div>
+    <p><strong>❤️ O que está acontecendo com Maria?</strong></p>
+    <p>🔴 A pressão está ALTA!<br>
+    ⚠️ Isso é perigoso para o coração, cérebro e rins!</p>
+
+    <div class="acoes">
+      <p><strong>💡 O que Maria precisa fazer?</strong></p>
+      <table class="tabela">
+        <tr>
+          <th>AÇÃO</th>
+          <th>O QUE FAZER</th>
+        </tr>
+        <tr>
+          <td>💊 Remédio</td>
+          <td>Tomar todo dia, no mesmo horário</td>
+        </tr>
+        <tr>
+          <td>🍽️ Comida</td>
+          <td>Comer com pouco sal, evitar enlatados</td>
+        </tr>
+        <tr>
+          <td>🚶‍♀️ Movimento</td>
+          <td>Caminhar todos os dias, mesmo que devagar</td>
+        </tr>
+        <tr>
+          <td>🧰 Acompanhamento</td>
+          <td>Medir a pressão sempre e voltar à UBS</td>
+        </tr>
+      </table>
+      <p class="frase">👉 “Mesmo sem dor, cuide do coração com amor!” ❤️</p>
+    </div>
+  </div>
+
+  <div class="ficha">
+    <h2>🍬 FICHA VISUAL – JOANA (Diabetes - DM)</h2>
+    <div class="dados">
+      <p>👵 <strong>Nome:</strong> Joana Angélica</p>
+      <p>📅 <strong>Idade:</strong> 62 anos</p>
+      <p>💉 <strong>Glicemia:</strong> 320 mg/dL</p>
+      <p>😓 Está cansada, com sede e perdendo peso</p>
+      <p>🍭 Come mal, não entende bem as orientações</p>
+    </div>
+    <p><strong>🔴 O que está acontecendo com Joana?</strong></p>
+    <p>⚠️ O açúcar no sangue está MUITO ALTO!<br>
+    ➡️ Isso pode causar desmaios, cegueira, problemas no rim e no pé!</p>
+
+    <div class="acoes">
+      <p><strong>💡 O que Joana precisa fazer?</strong></p>
+      <table class="tabela">
+        <tr>
+          <th>AÇÃO</th>
+          <th>O QUE FAZER</th>
+        </tr>
+        <tr>
+          <td>🍽️ Alimentação</td>
+          <td>Evitar doces, refrigerantes e comidas gordurosas</td>
+        </tr>
+        <tr>
+          <td>💧 Água</td>
+          <td>Beber bastante água</td>
+        </tr>
+        <tr>
+          <td>💊 Remédio</td>
+          <td>Tomar direitinho, todos os dias</td>
+        </tr>
+        <tr>
+          <td>📝 Informação</td>
+          <td>Receber explicações com paciência e exemplos simples</td>
+        </tr>
+      </table>
+      <p class="frase">👉 “Sem muito doce, com mais carinho, sua saúde vai no caminho!” 🍎</p>
+    </div>
+  </div>
+
+
+  <script>
+    function mostrarResposta(id) {
+      const el = document.getElementById(id);
+      el.style.display = el.style.display === "block" ? "none" : "block";
+    }
+  </script>
+</body>
+</html>

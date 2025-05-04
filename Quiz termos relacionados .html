@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Enfermagem - Termos Técnicos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+#quiz-container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+#quiz-form {
+    margin: 20px 0;
+}
+
+.question {
+    margin-bottom: 20px;
+}
+
+.question p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+</style>
+<body>
+    <div id="quiz-container">
+        <h1>Quiz de Enfermagem - Termos Técnicos</h1>
+        <form id="quiz-form">
+            <!-- Questões serão inseridas aqui dinamicamente pelo JavaScript -->
+        </form>
+        <button id="submit-btn">Finalizar</button>
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>const questions = [
+        { question: "O que é a Pressão Arterial (PA)?", options: ["Medição da quantidade de sangue no coração", "Medição da força exercida pelo sangue contra as paredes das artérias", "Medição da quantidade de oxigênio no sangue", "Medição da pressão nos pulmões"], correct: 1 },
+        { question: "O que caracteriza a Hipertensão Primária?", options: ["Hipertensão causada por doença renal", "Hipertensão sem causa identificada", "Hipertensão causada por problema cardiovascular", "Hipertensão com causa conhecida"], correct: 1 },
+        { question: "O que é a Crise Hipertensiva?", options: ["Aumento gradual da pressão arterial", "Aumento rápido e significativo da pressão arterial", "Diminuição abrupta da pressão arterial", "Estabilidade da pressão arterial"], correct: 1 },
+        { question: "Qual a condição caracterizada por níveis elevados de glicose no sangue?", options: ["Hipoglicemia", "Hiperglicemia", "Dislipidemia", "Anemia"], correct: 1 },
+        { question: "O que é a Glicemia de Jejum?", options: ["Medição de glicose no sangue após comer", "Medição de glicose no sangue após exercício físico", "Medição de glicose no sangue após jejum", "Medição de glicose no sangue após tomar insulina"], correct: 2 },
+        { question: "Qual é o nome do hormônio necessário para metabolizar a glicose?", options: ["Adrenalina", "Insulina", "Cortisol", "Estrogênio"], correct: 1 },
+        { question: "O que é a Retinopatia Diabética?", options: ["Infecção nos olhos devido ao diabetes", "Danos nos vasos sanguíneos da retina devido ao diabetes", "Perda de visão temporária", "Inflamação na pálpebra"], correct: 1 },
+        { question: "O que é a Aterosclerose?", options: ["Processo inflamatório nos pulmões", "Acúmulo de placas de gordura nas artérias", "Espessamento das artérias do coração", "Redução da quantidade de sangue nos músculos"], correct: 1 },
+        { question: "Qual das alternativas caracteriza a Angina Pectoris?", options: ["Dor abdominal intensa", "Dor nas articulações", "Dor no peito causada por redução do fluxo sanguíneo para o coração", "Dor nas pernas"], correct: 2 },
+        { question: "O que é a Angioplastia Coronária?", options: ["Procedimento para restaurar o fluxo sanguíneo ao cérebro", "Procedimento para remover a gordura das artérias", "Procedimento para desobstruir artérias coronárias", "Procedimento para desobstruir as artérias do pescoço"], correct: 2 },
+        { question: "O que caracteriza um Infarto do Miocárdio (IAM)?", options: ["Bloqueio das artérias coronárias e morte do tecido muscular cardíaco", "Infecção viral no coração", "Estresse causado por esforço físico intenso", "Inflamação nas veias do coração"], correct: 0 },
+        { question: "O que é Isquemia Miocárdica?", options: ["Aumento do oxigênio no músculo cardíaco", "Falta de oxigênio no músculo cardíaco devido ao bloqueio de uma artéria", "Aumento do fluxo sanguíneo para o coração", "Doença respiratória que afeta o coração"], correct: 1 },
+        { question: "O que são os Marcadores Cardíacos?", options: ["Medicamentos utilizados no tratamento do infarto", "Substâncias no sangue que indicam lesão no coração", "Instrumentos usados para medir a pressão arterial", "Exercícios que ajudam na recuperação cardíaca"], correct: 1 },
+        { question: "O que é o ECG (Eletrocardiograma)?", options: ["Exame que mede a pressão arterial", "Exame para avaliar a atividade elétrica do coração", "Exame para medir a glicose no sangue", "Exame de imagem para ver os pulmões"], correct: 1 },
+        { question: "O que caracteriza a Angina Instável?", options: ["Dor no peito que ocorre de forma imprevisível e pode indicar um infarto iminente", "Dor constante no peito que melhora com repouso", "Dores nas costas associadas ao estresse", "Dor abdominal após a alimentação"], correct: 0 },
+        { question: "O que é a DPOC (Doença Pulmonar Obstrutiva Crônica)?", options: ["Doença do fígado que afeta a respiração", "Doença que afeta os pulmões e dificulta a respiração", "Doença que afeta a função cardíaca", "Doença que afeta os rins e a pressão arterial"], correct: 1 },
+        { question: "O que caracteriza a Bronquite Crônica?", options: ["Infecção viral nos pulmões", "Tosse persistente com secreção, geralmente devido a inflamação nos brônquios", "Dificuldade respiratória associada a alergias", "Bloqueio das vias respiratórias superiores"], correct: 1 },
+        { question: "O que é o Enfisema Pulmonar?", options: ["Inflamação das vias aéreas superiores", "Danos nos alvéolos pulmonares, dificultando a troca de oxigênio", "Acúmulo de muco nas vias respiratórias", "Espasmo nas vias aéreas"], correct: 1 },
+        { question: "O que é o Pneumotórax?", options: ["Condição de aumento de secreção no pulmão", "Acúmulo de ar na cavidade pleural, causando colapso do pulmão", "Infecção bacteriana nos pulmões", "Processo inflamatório nos alvéolos pulmonares"], correct: 1 },
+        { question: "O que é a Oxigenoterapia?", options: ["Uso de medicamentos para melhorar a respiração", "Uso de oxigênio suplementar para melhorar a oxigenação sanguínea", "Terapia para aumentar a função pulmonar sem oxigênio", "Tratamento com antibióticos para doenças respiratórias"], correct: 1 },
+        { question: "O que caracteriza a Hipoglicemia?", options: ["Aumento de glicose no sangue", "Baixos níveis de glicose no sangue", "Níveis normais de glicose", "Alteração na pressão arterial"], correct: 1 },
+        { question: "Qual é a função do hormônio insulina?", options: ["Aumentar a glicose no sangue", "Diminuir a glicose no sangue", "Aumentar a pressão arterial", "Estimular o coração a bater mais rápido"], correct: 1 },
+        { question: "O que é a Nefropatia Diabética?", options: ["Danos nos nervos devido ao diabetes", "Danos nos rins devido ao diabetes", "Inflamação nas articulações devido ao diabetes", "Aumento da pressão arterial devido ao diabetes"], correct: 1 },
+        { question: "Qual é a principal complicação do Diabetes Mellitus a longo prazo?", options: ["Infecção", "Hipertensão", "Danos nos órgãos", "Dor nas articulações"], correct: 2 },
+        { question: "O que é a Dislipidemia?", options: ["Aumento do colesterol e triglicerídeos no sangue", "Redução da glicose no sangue", "Aumento da pressão arterial", "Doenças do fígado"], correct: 0 },
+        { question: "O que caracteriza a Insuficiência Cardíaca?", options: ["Impossibilidade do coração bombear sangue de maneira eficiente", "Acúmulo de ar nos pulmões", "Aumento de pressão arterial", "Acúmulo de gordura nas artérias"], correct: 0 },
+        { question: "O que é a Hipertensão Secundária?", options: ["Hipertensão sem causa conhecida", "Hipertensão causada por outra doença", "Hipertensão sem sintomas", "Hipertensão associada à infecção"], correct: 1 },
+        { question: "O que é a Tromboembolismo Pulmonar?", options: ["Formação de coágulo no coração", "Formação de coágulo nas veias que migra para os pulmões", "Infecção nos pulmões", "Falta de oxigênio no sangue"], correct: 1 },
+        { question: "O que caracteriza a Asma?", options: ["Dificuldade respiratória causada por estreitamento das vias respiratórias", "Infecção viral nos pulmões", "Acúmulo de muco nas vias respiratórias", "Dificuldade respiratória causada por infecção",], correct: 0 },
+        { question: "O que é a Apneia do Sono?", options: ["Parada respiratória durante o sono", "Dificuldade para adormecer", "Respiração acelerada durante o sono", "Respiração ofegante ao acordar"], correct: 0 },
+        { question: "O que é a Bronquiolite?", options: ["Infecção viral que afeta os pulmões", "Inflamação nas vias aéreas pequenas dos pulmões", "Acúmulo de secreção nas vias respiratórias superiores", "Infecção bacteriana nos pulmões"], correct: 1 },
+        // Continue com o resto das questões
+    ];
+    
+    // Gerar as perguntas dinamicamente
+    const quizForm = document.getElementById("quiz-form");
+    
+    questions.forEach((questionData, index) => {
+        const questionDiv = document.createElement("div");
+        questionDiv.classList.add("question");
+        
+        const questionText = document.createElement("p");
+        questionText.textContent = `${index + 1}. ${questionData.question}`;
+        questionDiv.appendChild(questionText);
+        
+        questionData.options.forEach((option, i) => {
+            const label = document.createElement("label");
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = `question${index}`;
+            input.value = i;
+            label.appendChild(input);
+            label.appendChild(document.createTextNode(option));
+            questionDiv.appendChild(label);
+        });
+    
+        quizForm.appendChild(questionDiv);
+    });
+    
+    document.getElementById("submit-btn").addEventListener("click", () => {
+        const answers = [];
+        let score = 0;
+    
+        questions.forEach((questionData, index) => {
+            const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+            if (selectedOption) {
+                const answer = parseInt(selectedOption.value);
+                answers.push(answer);
+                if (answer === questionData.correct) score++;
+            } else {
+                answers.push(null);
+            }
+        });
+    
+        const result = document.getElementById("result");
+        result.textContent = `Você acertou ${score} de ${questions.length} perguntas.`;
+    });
+    </script>
+</body>
+</html>
+
+

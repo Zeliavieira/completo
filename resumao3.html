@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz de Verdadeiro ou Falso</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background: #f0f4f8;
+    margin: 0;
+    padding: 20px;
+  }
+  .quiz-container {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    max-width: 700px;
+    margin: auto;
+  }
+  .question {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  .buttons {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: white;
+    transition: background 0.3s;
+  }
+  button:hover {
+    background-color: #2980b9;
+  }
+  .feedback {
+    font-size: 16px;
+    margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <div id="quiz">
+    <div class="question" id="question"></div>
+    <div class="buttons">
+      <button onclick="answer(true)">Verdadeiro</button>
+      <button onclick="answer(false)">Falso</button>
+    </div>
+    <div class="feedback" id="feedback"></div>
+  </div>
+</div>
+
+<script>
+const questions = [
+  { text: "O útero faz parte do sistema reprodutor interno feminino.", correct: true },
+  { text: "O clitóris faz parte do sistema reprodutor interno.", correct: false },
+  { text: "O PSMI é voltado apenas para crianças, sem foco nas mães.", correct: false },
+  { text: "O PAISM trata apenas da saúde da mulher durante a gravidez.", correct: false },
+  { text: "O PNAISM considera também adolescentes e mulheres idosas.", correct: true },
+  { text: "Direitos sexuais garantem o direito de escolher sobre a própria sexualidade.", correct: true },
+  { text: "Direitos reprodutivos obrigam a mulher a ter filhos.", correct: false },
+  { text: "O exame preventivo ajuda na prevenção do câncer de colo do útero.", correct: true },
+  { text: "O exame das mamas serve apenas para detectar nódulos grandes.", correct: false },
+  { text: "O exame de inspeção da genitália é feito apenas por ultrassom.", correct: false },
+  { text: "A coleta de material cérvico-uterino é feita com espátula e escovinha.", correct: true },
+  { text: "O ciclo menstrual médio dura cerca de 28 dias.", correct: true },
+  { text: "O hormônio FSH promove a ovulação.", correct: false },
+  { text: "A progesterona ajuda a manter o endométrio espesso.", correct: true },
+  { text: "O ciclo menstrual começa no dia em que a ovulação ocorre.", correct: false },
+  { text: "Amenorreia é a dor que ocorre durante a menstruação.", correct: false },
+  { text: "Dismenorreia é a ausência completa da menstruação.", correct: false },
+  { text: "A ovulação ocorre logo após a menstruação acabar.", correct: false },
+  { text: "A fecundação geralmente acontece nas trompas de Falópio.", correct: true },
+  { text: "Se o óvulo não for fecundado, será expulso durante a menstruação.", correct: true }
+];
+
+let currentQuestion = 0;
+
+function showQuestion() {
+  document.getElementById("question").innerText = questions[currentQuestion].text;
+  document.getElementById("feedback").innerText = "";
+}
+
+function answer(choice) {
+  if (choice === questions[currentQuestion].correct) {
+    document.getElementById("feedback").innerText = "✅ Resposta correta!";
+    document.getElementById("feedback").style.color = "green";
+  } else {
+    document.getElementById("feedback").innerText = "❌ Resposta incorreta!";
+    document.getElementById("feedback").style.color = "red";
+  }
+  setTimeout(() => {
+    currentQuestion++;
+    if (currentQuestion < questions.length) {
+      showQuestion();
+    } else {
+      document.getElementById("quiz").innerHTML = "<h2>Fim do Quiz! 🎉</h2>";
+    }
+  }, 1500);
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>

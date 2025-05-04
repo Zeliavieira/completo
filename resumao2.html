@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Saúde da Mulher</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f8ff;
+            margin: 20px;
+            padding: 0;
+        }
+        .question {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            padding: 10px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Quiz: Saúde da Mulher</h1>
+
+<div id="quiz"></div>
+
+<script>
+const questions = [
+    {
+        type: 'multi',
+        text: '1. Qual das estruturas abaixo NÃO faz parte do sistema reprodutor feminino interno?',
+        options: ['Ovário', 'Trompa de Falópio', 'Útero', 'Clitóris'],
+        correct: 'Clitóris'
+    },
+    {
+        type: 'multi',
+        text: '2. Assinale o que compõe a genitália feminina externa:',
+        options: ['Grandes lábios', 'Pequenos lábios', 'Vagina', 'Útero'],
+        correct: ['Grandes lábios', 'Pequenos lábios']
+    },
+    {
+        type: 'discursive',
+        text: '3. Explique o que é o PSMI e qual seu principal objetivo.',
+        suggested: 'PSMI é o Programa de Saúde Materno-Infantil, criado para reduzir a mortalidade materna e infantil, promovendo ações de assistência e prevenção.'
+    },
+    {
+        type: 'multi',
+        text: '4. O PAISM foi criado com qual finalidade?',
+        options: ['Reduzir apenas a mortalidade materna', 'Atender exclusivamente mulheres gestantes', 'Cuidar da saúde integral da mulher, em todas as fases da vida', 'Garantir apenas o acesso ao preventivo ginecológico'],
+        correct: 'Cuidar da saúde integral da mulher, em todas as fases da vida'
+    },
+    {
+        type: 'discursive',
+        text: '5. Cite duas diferenças entre o PAISM e o PNAISM.',
+        suggested: 'O PAISM focava na saúde da mulher em geral. O PNAISM ampliou para todas as fases da vida, reforçando direitos reprodutivos e atendimento humanizado.'
+    },
+    {
+        type: 'multi',
+        text: '6. Direitos sexuais e reprodutivos garantem, entre outros pontos:',
+        options: ['O direito de escolher livremente se quer ter filhos', 'O direito de ter acesso a métodos contraceptivos seguros', 'A obrigação de engravidar para formar família', 'O direito de ter acesso à informação sobre saúde sexual'],
+        correct: ['O direito de escolher livremente se quer ter filhos', 'O direito de ter acesso a métodos contraceptivos seguros', 'O direito de ter acesso à informação sobre saúde sexual']
+    },
+    {
+        type: 'discursive',
+        text: '7. Por que o exame preventivo ginecológico (Papanicolau) é importante?',
+        suggested: 'Para detectar precocemente alterações celulares no colo do útero e prevenir câncer.'
+    },
+    {
+        type: 'multi',
+        text: '8. Durante o exame das mamas, deve-se observar:',
+        options: ['Alterações no formato', 'Presença de secreções', 'Mudanças na pele', 'Todas as alternativas acima'],
+        correct: 'Todas as alternativas acima'
+    },
+    {
+        type: 'discursive',
+        text: '9. Descreva rapidamente como é feita a coleta do material cérvico-uterino para o preventivo.',
+        suggested: 'Com uso de espéculo, raspagem suave do colo uterino com espátula e escovinha para coleta de células.'
+    },
+    {
+        type: 'multi',
+        text: '10. Sobre o ciclo menstrual, marque a correta:',
+        options: ['O FSH é responsável pela ovulação.', 'O LH promove a maturação dos folículos.', 'O estrogênio aumenta a elasticidade vaginal.', 'A progesterona é responsável pela descamação do endométrio.'],
+        correct: 'O estrogênio aumenta a elasticidade vaginal.'
+    },
+    {
+        type: 'discursive',
+        text: '11. Explique o que é amenorreia e o que pode causá-la.',
+        suggested: 'Amenorreia é a ausência de menstruação, podendo ser causada por gravidez, estresse, disfunções hormonais ou prática intensa de exercícios.'
+    },
+    {
+        type: 'multi',
+        text: '12. Dismenorreia é:',
+        options: ['Ausência de menstruação', 'Dor durante a menstruação', 'Sangramento anormal fora do ciclo', 'Perda da capacidade de ovular'],
+        correct: 'Dor durante a menstruação'
+    },
+    {
+        type: 'discursive',
+        text: '13. O que ocorre com o óvulo após a ovulação, caso não haja fecundação?',
+        suggested: 'O óvulo se desintegra e é eliminado junto com o endométrio na menstruação.'
+    },
+    {
+        type: 'multi',
+        text: '14. A fecundação normalmente ocorre em qual parte do sistema reprodutor feminino?',
+        options: ['Vagina', 'Útero', 'Ovário', 'Trompa de Falópio'],
+        correct: 'Trompa de Falópio'
+    }
+];
+
+function loadQuiz() {
+    const quizDiv = document.getElementById('quiz');
+    questions.forEach((q, index) => {
+        const div = document.createElement('div');
+        div.className = 'question';
+
+        const title = document.createElement('h2');
+        title.textContent = q.text;
+        div.appendChild(title);
+
+        if (q.type === 'multi') {
+            q.options.forEach(opt => {
+                const label = document.createElement('label');
+                const input = document.createElement('input');
+                input.type = (Array.isArray(q.correct)) ? 'checkbox' : 'radio';
+                input.name = 'q' + index;
+                input.value = opt;
+                label.appendChild(input);
+                label.appendChild(document.createTextNode(opt));
+                div.appendChild(label);
+                div.appendChild(document.createElement('br'));
+            });
+            const btn = document.createElement('button');
+            btn.textContent = 'Verificar resposta';
+            btn.onclick = () => checkAnswer(index, q.correct);
+            div.appendChild(btn);
+            const feedback = document.createElement('div');
+            feedback.className = 'feedback';
+            feedback.id = 'feedback' + index;
+            div.appendChild(feedback);
+        } else if (q.type === 'discursive') {
+            const textarea = document.createElement('textarea');
+            textarea.id = 'disc' + index;
+            div.appendChild(textarea);
+            const btn = document.createElement('button');
+            btn.textContent = 'Ver resposta sugerida';
+            btn.onclick = () => showSuggestion(index, q.suggested);
+            div.appendChild(btn);
+            const feedback = document.createElement('div');
+            feedback.className = 'feedback';
+            feedback.id = 'feedback' + index;
+            div.appendChild(feedback);
+        }
+
+        quizDiv.appendChild(div);
+    });
+}
+
+function checkAnswer(index, correct) {
+    const inputs = document.querySelectorAll(`input[name='q${index}']:checked`);
+    const selected = Array.from(inputs).map(input => input.value);
+    let feedback = document.getElementById('feedback' + index);
+
+    if (Array.isArray(correct)) {
+        const correctSorted = correct.slice().sort().join(',');
+        const selectedSorted = selected.slice().sort().join(',');
+        if (correctSorted === selectedSorted) {
+            feedback.textContent = '✅ Correto!';
+            feedback.style.color = 'green';
+        } else {
+            feedback.textContent = '❌ Incorreto!';
+            feedback.style.color = 'red';
+        }
+    } else {
+        if (selected[0] === correct) {
+            feedback.textContent = '✅ Correto!';
+            feedback.style.color = 'green';
+        } else {
+            feedback.textContent = '❌ Incorreto!';
+            feedback.style.color = 'red';
+        }
+    }
+}
+
+function showSuggestion(index, suggested) {
+    const feedback = document.getElementById('feedback' + index);
+    feedback.innerHTML = '<b>Resposta sugerida:</b> ' + suggested;
+}
+
+loadQuiz();
+</script>
+
+</body>
+</html>

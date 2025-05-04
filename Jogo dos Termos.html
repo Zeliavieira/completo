@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo: Complete com o Termo Técnico</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f4f8;
+      padding: 20px;
+    }
+    .card {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      width: 60%;
+      margin-top: 10px;
+    }
+    button {
+      padding: 8px 12px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .btn-verificar {
+      background-color: #4caf50;
+      color: white;
+    }
+    .btn-mostrar {
+      background-color: #2196f3;
+      color: white;
+    }
+    .resposta {
+      display: none;
+      margin-top: 5px;
+      color: #800000;
+      font-weight: bold;
+    }
+    .correto {
+      border: 2px solid green;
+    }
+    .incorreto {
+      border: 2px solid red;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Complete com o Termo Técnico</h1>
+  <p><em>Leia a descrição e digite o termo técnico correspondente. Se não souber, clique em "Mostrar Resposta".</em></p>
+
+  <!-- Termos de A a B -->
+  <div class="card">
+    <p>Acúmulo de pus em uma parte do corpo.</p>
+    <input type="text" data-resposta="abscesso" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Abscesso</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Aumento dos gânglios linfáticos.</p>
+    <input type="text" data-resposta="adenomegalia" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Adenomegalia</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Cansaço ou esgotamento extremo.</p>
+    <input type="text" data-resposta="astenia" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Astenia</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Perda de coordenação nos movimentos.</p>
+    <input type="text" data-resposta="ataxia" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Ataxia</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Retirada de um pedacinho de tecido para exame.</p>
+    <input type="text" data-resposta="biopsia" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Biopsia</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Respiração mais lenta do que o normal.</p>
+    <input type="text" data-resposta="bradipneia" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Bradipneia</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Batimento cardíaco mais lento do que o normal.</p>
+    <input type="text" data-resposta="bradicardia" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Bradicardia</strong></div>
+  </div>
+
+  <!-- Termos de C a D -->
+  <div class="card">
+    <p>Cor azulada na pele por falta de oxigênio.</p>
+    <input type="text" data-resposta="cianose" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Cianose</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Dor de cabeça.</p>
+    <input type="text" data-resposta="cefaleia" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Cefaleia</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Sensação que causa vontade de coçar.</p>
+    <input type="text" data-resposta="coceira" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Coceira (Prurido)</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Lesão causada por pancada sem corte.</p>
+    <input type="text" data-resposta="contusão" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Contusão</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Contrações musculares involuntárias e intensas.</p>
+    <input type="text" data-resposta="convulsão" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Convulsão</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Dificuldade para respirar.</p>
+    <input type="text" data-resposta="dispneia" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Dispneia</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Evacuação frequente e líquida.</p>
+    <input type="text" data-resposta="diarreia" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Diarreia</strong></div>
+  </div>
+
+  <div class="card">
+    <p>Evacuação frequente e líquida.</p>
+    <input type="text" data-resposta="desidratação" placeholder="Digite o termo técnico">
+    <button class="btn-mostrar">Mostrar Resposta</button>
+    <div class="resposta">Termo: <strong>Desidratação</strong></div>
+  </div>
+
+  <button class="btn-verificar">Verificar Respostas</button>
+
+  <script>
+    document.querySelectorAll('.btn-mostrar').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const resposta = btn.nextElementSibling;
+        resposta.style.display = 'block';
+      });
+    });
+
+    document.querySelector('.btn-verificar').addEventListener('click', () => {
+      let tudoCerto = true;
+      document.querySelectorAll('input').forEach(input => {
+        const certo = input.dataset.resposta.trim().toLowerCase();
+        const valor = input.value.trim().toLowerCase();
+        if (valor === certo) {
+          input.classList.add('correto');
+          input.classList.remove('incorreto');
+        } else {
+          input.classList.add('incorreto');
+          input.classList.remove('correto');
+          tudoCerto = false;
+        }
+      });
+
+      if (tudoCerto) {
+        alert("Parabéns! Você acertou tudo!");
+      } else {
+        alert("Algumas respostas estão incorretas. Tente novamente.");
+      }
+    });
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Reprodução Feminina</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .question {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+        .answer-options {
+            margin-bottom: 10px;
+        }
+        .result {
+            margin-top: 10px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Quiz - Reprodução Feminina</h1>
+    
+    <!-- Pergunta 1 -->
+    <div id="question-1" class="question">
+        <p>1. A puberdade começa com o surgimento dos pelos pubianos e o alargamento do quadril.</p>
+        <div class="answer-options">
+            <input type="radio" id="q1-true" name="q1" value="true">
+            <label for="q1-true">Verdadeiro</label>
+            <input type="radio" id="q1-false" name="q1" value="false">
+            <label for="q1-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(1, 'true')">Responder</button>
+        <div id="result-1" class="result"></div>
+    </div>
+
+    <!-- Pergunta 2 -->
+    <div id="question-2" class="question">
+        <p>2. A menarca ocorre na fase inicial da puberdade, quando a primeira menstruação acontece.</p>
+        <div class="answer-options">
+            <input type="radio" id="q2-true" name="q2" value="true">
+            <label for="q2-true">Verdadeiro</label>
+            <input type="radio" id="q2-false" name="q2" value="false">
+            <label for="q2-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(2, 'true')">Responder</button>
+        <div id="result-2" class="result"></div>
+    </div>
+
+    <!-- Pergunta 3 -->
+    <div id="question-3" class="question">
+        <p>3. A fase reprodutiva da mulher vai desde a menarca até a menopausa.</p>
+        <div class="answer-options">
+            <input type="radio" id="q3-true" name="q3" value="true">
+            <label for="q3-true">Verdadeiro</label>
+            <input type="radio" id="q3-false" name="q3" value="false">
+            <label for="q3-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(3, 'true')">Responder</button>
+        <div id="result-3" class="result"></div>
+    </div>
+
+    <!-- Pergunta 4 -->
+    <div id="question-4" class="question">
+        <p>4. O ciclo menstrual de uma mulher dura em média 28 dias, mas pode variar entre 21 e 35 dias.</p>
+        <div class="answer-options">
+            <input type="radio" id="q4-true" name="q4" value="true">
+            <label for="q4-true">Verdadeiro</label>
+            <input type="radio" id="q4-false" name="q4" value="false">
+            <label for="q4-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(4, 'true')">Responder</button>
+        <div id="result-4" class="result"></div>
+    </div>
+
+    <!-- Pergunta 5 -->
+    <div id="question-5" class="question">
+        <p>5. A ovulação ocorre no meio do ciclo menstrual, geralmente no 14º dia de um ciclo de 28 dias.</p>
+        <div class="answer-options">
+            <input type="radio" id="q5-true" name="q5" value="true">
+            <label for="q5-true">Verdadeiro</label>
+            <input type="radio" id="q5-false" name="q5" value="false">
+            <label for="q5-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(5, 'true')">Responder</button>
+        <div id="result-5" class="result"></div>
+    </div>
+
+    <!-- Pergunta 6 -->
+    <div id="question-6" class="question">
+        <p>6. A progesterona é o hormônio responsável pela ovulação.</p>
+        <div class="answer-options">
+            <input type="radio" id="q6-true" name="q6" value="true">
+            <label for="q6-true">Verdadeiro</label>
+            <input type="radio" id="q6-false" name="q6" value="false">
+            <label for="q6-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(6, 'false')">Responder</button>
+        <div id="result-6" class="result"></div>
+    </div>
+
+    <!-- Pergunta 7 -->
+    <div id="question-7" class="question">
+        <p>7. A progesterona é responsável por manter o endométrio preparado para a implantação do embrião.</p>
+        <div class="answer-options">
+            <input type="radio" id="q7-true" name="q7" value="true">
+            <label for="q7-true">Verdadeiro</label>
+            <input type="radio" id="q7-false" name="q7" value="false">
+            <label for="q7-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(7, 'true')">Responder</button>
+        <div id="result-7" class="result"></div>
+    </div>
+
+    <!-- Pergunta 8 -->
+    <div id="question-8" class="question">
+        <p>8. O corpo lúteo é responsável pela produção de estrógeno durante a primeira fase do ciclo menstrual.</p>
+        <div class="answer-options">
+            <input type="radio" id="q8-true" name="q8" value="true">
+            <label for="q8-true">Verdadeiro</label>
+            <input type="radio" id="q8-false" name="q8" value="false">
+            <label for="q8-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(8, 'false')">Responder</button>
+        <div id="result-8" class="result"></div>
+    </div>
+
+    <!-- Pergunta 9 -->
+    <div id="question-9" class="question">
+        <p>9. O estrógeno é o principal hormônio na fase folicular do ciclo menstrual.</p>
+        <div class="answer-options">
+            <input type="radio" id="q9-true" name="q9" value="true">
+            <label for="q9-true">Verdadeiro</label>
+            <input type="radio" id="q9-false" name="q9" value="false">
+            <label for="q9-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(9, 'true')">Responder</button>
+        <div id="result-9" class="result"></div>
+    </div>
+
+    <!-- Pergunta 10 -->
+    <div id="question-10" class="question">
+        <p>10. A menstruação ocorre devido ao aumento do nível de progesterona.</p>
+        <div class="answer-options">
+            <input type="radio" id="q10-true" name="q10" value="true">
+            <label for="q10-true">Verdadeiro</label>
+            <input type="radio" id="q10-false" name="q10" value="false">
+            <label for="q10-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(10, 'false')">Responder</button>
+        <div id="result-10" class="result"></div>
+    </div>
+
+    <div id="question-11" class="question">
+        <p>11. O ciclo menstrual é controlado pelos hormônios LH, FSH, estrógeno e progesterona.</p>
+        <div class="answer-options">
+            <input type="radio" id="q11-true" name="q11" value="true">
+            <label for="q11-true">Verdadeiro</label>
+            <input type="radio" id="q11-false" name="q11" value="false">
+            <label for="q11-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(11, 'true')">Responder</button>
+        <div id="result-11" class="result"></div>
+    </div>
+
+    <!-- Pergunta 12 -->
+    <div id="question-12" class="question">
+        <p>12. O hormônio FSH estimula a produção de leite nas glândulas mamárias.</p>
+        <div class="answer-options">
+            <input type="radio" id="q12-true" name="q12" value="true">
+            <label for="q12-true">Verdadeiro</label>
+            <input type="radio" id="q12-false" name="q12" value="false">
+            <label for="q12-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(12, 'false')">Responder</button>
+        <div id="result-12" class="result"></div>
+    </div>
+
+    <!-- Pergunta 13 -->
+    <div id="question-13" class="question">
+        <p>13. O ciclo menstrual ocorre apenas uma vez por ano nas mulheres.</p>
+        <div class="answer-options">
+            <input type="radio" id="q13-true" name="q13" value="true">
+            <label for="q13-true">Verdadeiro</label>
+            <input type="radio" id="q13-false" name="q13" value="false">
+            <label for="q13-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(13, 'false')">Responder</button>
+        <div id="result-13" class="result"></div>
+    </div>
+
+    <!-- Pergunta 14 -->
+    <div id="question-14" class="question">
+        <p>14. A produção de óvulos pelas mulheres ocorre desde o nascimento e continua por toda a vida.</p>
+        <div class="answer-options">
+            <input type="radio" id="q14-true" name="q14" value="true">
+            <label for="q14-true">Verdadeiro</label>
+            <input type="radio" id="q14-false" name="q14" value="false">
+            <label for="q14-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(14, 'false')">Responder</button>
+        <div id="result-14" class="result"></div>
+    </div>
+
+    <!-- Pergunta 15 -->
+    <div id="question-15" class="question">
+        <p>15. A menopausa é o fim dos ciclos menstruais e da fertilidade feminina.</p>
+        <div class="answer-options">
+            <input type="radio" id="q15-true" name="q15" value="true">
+            <label for="q15-true">Verdadeiro</label>
+            <input type="radio" id="q15-false" name="q15" value="false">
+            <label for="q15-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(15, 'true')">Responder</button>
+        <div id="result-15" class="result"></div>
+    </div>
+
+    <!-- Pergunta 16 -->
+    <div id="question-16" class="question">
+        <p>16. O espermatozóide é responsável pela fecundação do óvulo na trompa de falópio.</p>
+        <div class="answer-options">
+            <input type="radio" id="q16-true" name="q16" value="true">
+            <label for="q16-true">Verdadeiro</label>
+            <input type="radio" id="q16-false" name="q16" value="false">
+            <label for="q16-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(16, 'true')">Responder</button>
+        <div id="result-16" class="result"></div>
+    </div>
+
+    <!-- Pergunta 17 -->
+    <div id="question-17" class="question">
+        <p>17. A primeira menstruação de uma mulher é chamada de menarca.</p>
+        <div class="answer-options">
+            <input type="radio" id="q17-true" name="q17" value="true">
+            <label for="q17-true">Verdadeiro</label>
+            <input type="radio" id="q17-false" name="q17" value="false">
+            <label for="q17-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(17, 'true')">Responder</button>
+        <div id="result-17" class="result"></div>
+    </div>
+
+    <!-- Pergunta 18 -->
+    <div id="question-18" class="question">
+        <p>18. O útero é o órgão onde o óvulo se encontra com o espermatozóide e a fecundação ocorre.</p>
+        <div class="answer-options">
+            <input type="radio" id="q18-true" name="q18" value="true">
+            <label for="q18-true">Verdadeiro</label>
+            <input type="radio" id="q18-false" name="q18" value="false">
+            <label for="q18-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(18, 'false')">Responder</button>
+        <div id="result-18" class="result"></div>
+    </div>
+
+    <!-- Pergunta 19 -->
+    <div id="question-19" class="question">
+        <p>19. O miométrio é a camada muscular do útero que contrai durante o parto.</p>
+        <div class="answer-options">
+            <input type="radio" id="q19-true" name="q19" value="true">
+            <label for="q19-true">Verdadeiro</label>
+            <input type="radio" id="q19-false" name="q19" value="false">
+            <label for="q19-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(19, 'true')">Responder</button>
+        <div id="result-19" class="result"></div>
+    </div>
+
+    <!-- Pergunta 20 -->
+    <div id="question-20" class="question">
+        <p>20. O endométrio é a camada do útero que se descama durante a menstruação.</p>
+        <div class="answer-options">
+            <input type="radio" id="q20-true" name="q20" value="true">
+            <label for="q20-true">Verdadeiro</label>
+            <input type="radio" id="q20-false" name="q20" value="false">
+            <label for="q20-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(20, 'true')">Responder</button>
+        <div id="result-20" class="result"></div>
+    </div>
+
+
+    <div id="question-21" class="question">
+        <p>21. O ovariano é o principal hormônio responsável pela ovulação.</p>
+        <div class="answer-options">
+            <input type="radio" id="q21-true" name="q21" value="true">
+            <label for="q21-true">Verdadeiro</label>
+            <input type="radio" id="q21-false" name="q21" value="false">
+            <label for="q21-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(21, 'false')">Responder</button>
+        <div id="result-21" class="result"></div>
+    </div>
+
+    <!-- Pergunta 22 -->
+    <div id="question-22" class="question">
+        <p>22. O hormônio estrógeno é responsável pelo desenvolvimento das características sexuais secundárias femininas.</p>
+        <div class="answer-options">
+            <input type="radio" id="q22-true" name="q22" value="true">
+            <label for="q22-true">Verdadeiro</label>
+            <input type="radio" id="q22-false" name="q22" value="false">
+            <label for="q22-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(22, 'true')">Responder</button>
+        <div id="result-22" class="result"></div>
+    </div>
+
+    <!-- Pergunta 23 -->
+    <div id="question-23" class="question">
+        <p>23. O progesterona tem a função principal de preparar o útero para a gestação.</p>
+        <div class="answer-options">
+            <input type="radio" id="q23-true" name="q23" value="true">
+            <label for="q23-true">Verdadeiro</label>
+            <input type="radio" id="q23-false" name="q23" value="false">
+            <label for="q23-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(23, 'true')">Responder</button>
+        <div id="result-23" class="result"></div>
+    </div>
+
+    <!-- Pergunta 24 -->
+    <div id="question-24" class="question">
+        <p>24. O período fértil ocorre no início do ciclo menstrual.</p>
+        <div class="answer-options">
+            <input type="radio" id="q24-true" name="q24" value="true">
+            <label for="q24-true">Verdadeiro</label>
+            <input type="radio" id="q24-false" name="q24" value="false">
+            <label for="q24-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(24, 'false')">Responder</button>
+        <div id="result-24" class="result"></div>
+    </div>
+
+    <!-- Pergunta 25 -->
+    <div id="question-25" class="question">
+        <p>25. O muco cervical é mais espesso durante o período fértil.</p>
+        <div class="answer-options">
+            <input type="radio" id="q25-true" name="q25" value="true">
+            <label for="q25-true">Verdadeiro</label>
+            <input type="radio" id="q25-false" name="q25" value="false">
+            <label for="q25-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(25, 'false')">Responder</button>
+        <div id="result-25" class="result"></div>
+    </div>
+
+    <!-- Pergunta 26 -->
+    <div id="question-26" class="question">
+        <p>26. O ovócito é o nome dado ao óvulo não fecundado.</p>
+        <div class="answer-options">
+            <input type="radio" id="q26-true" name="q26" value="true">
+            <label for="q26-true">Verdadeiro</label>
+            <input type="radio" id="q26-false" name="q26" value="false">
+            <label for="q26-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(26, 'true')">Responder</button>
+        <div id="result-26" class="result"></div>
+    </div>
+
+    <!-- Pergunta 27 -->
+    <div id="question-27" class="question">
+        <p>27. A ovulação ocorre geralmente no meio do ciclo menstrual.</p>
+        <div class="answer-options">
+            <input type="radio" id="q27-true" name="q27" value="true">
+            <label for="q27-true">Verdadeiro</label>
+            <input type="radio" id="q27-false" name="q27" value="false">
+            <label for="q27-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(27, 'true')">Responder</button>
+        <div id="result-27" class="result"></div>
+    </div>
+
+    <!-- Pergunta 28 -->
+    <div id="question-28" class="question">
+        <p>28. Durante a gravidez, o hormônio progesterona diminui e o estrógeno aumenta.</p>
+        <div class="answer-options">
+            <input type="radio" id="q28-true" name="q28" value="true">
+            <label for="q28-true">Verdadeiro</label>
+            <input type="radio" id="q28-false" name="q28" value="false">
+            <label for="q28-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(28, 'false')">Responder</button>
+        <div id="result-28" class="result"></div>
+    </div>
+
+    <!-- Pergunta 29 -->
+    <div id="question-29" class="question">
+        <p>29. O folículo ovariano amadurece durante a fase folicular do ciclo menstrual.</p>
+        <div class="answer-options">
+            <input type="radio" id="q29-true" name="q29" value="true">
+            <label for="q29-true">Verdadeiro</label>
+            <input type="radio" id="q29-false" name="q29" value="false">
+            <label for="q29-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(29, 'true')">Responder</button>
+        <div id="result-29" class="result"></div>
+    </div>
+
+    <!-- Pergunta 30 -->
+    <div id="question-30" class="question">
+        <p>30. O corpo lúteo é responsável pela secreção de progesterona após a ovulação.</p>
+        <div class="answer-options">
+            <input type="radio" id="q30-true" name="q30" value="true">
+            <label for="q30-true">Verdadeiro</label>
+            <input type="radio" id="q30-false" name="q30" value="false">
+            <label for="q30-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(30, 'true')">Responder</button>
+        <div id="result-30" class="result"></div>
+    </div>
+
+    <!-- Pergunta 31 -->
+    <div id="question-31" class="question">
+        <p>31. O ciclo menstrual é influenciado pela produção de hormônios pela hipófise.</p>
+        <div class="answer-options">
+            <input type="radio" id="q31-true" name="q31" value="true">
+            <label for="q31-true">Verdadeiro</label>
+            <input type="radio" id="q31-false" name="q31" value="false">
+            <label for="q31-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(31, 'true')">Responder</button>
+        <div id="result-31" class="result"></div>
+    </div>
+
+    <!-- Pergunta 32 -->
+    <div id="question-32" class="question">
+        <p>32. A progesterona é necessária para manter a gravidez nos primeiros meses.</p>
+        <div class="answer-options">
+            <input type="radio" id="q32-true" name="q32" value="true">
+            <label for="q32-true">Verdadeiro</label>
+            <input type="radio" id="q32-false" name="q32" value="false">
+            <label for="q32-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(32, 'true')">Responder</button>
+        <div id="result-32" class="result"></div>
+    </div>
+
+    <!-- Pergunta 33 -->
+    <div id="question-33" class="question">
+        <p>33. O endométrio é a camada que reveste a parte interna do útero e recebe o embrião.</p>
+        <div class="answer-options">
+            <input type="radio" id="q33-true" name="q33" value="true">
+            <label for="q33-true">Verdadeiro</label>
+            <input type="radio" id="q33-false" name="q33" value="false">
+            <label for="q33-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(33, 'true')">Responder</button>
+        <div id="result-33" class="result"></div>
+    </div>
+
+    <!-- Pergunta 34 -->
+    <div id="question-34" class="question">
+        <p>34. O ciclo menstrual tem uma duração média de 28 dias.</p>
+        <div class="answer-options">
+            <input type="radio" id="q34-true" name="q34" value="true">
+            <label for="q34-true">Verdadeiro</label>
+            <input type="radio" id="q34-false" name="q34" value="false">
+            <label for="q34-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(34, 'true')">Responder</button>
+        <div id="result-34" class="result"></div>
+    </div>
+
+    <!-- Pergunta 35 -->
+    <div id="question-35" class="question">
+        <p>35. Durante a ovulação, o óvulo é liberado do folículo ovariano.</p>
+        <div class="answer-options">
+            <input type="radio" id="q35-true" name="q35" value="true">
+            <label for="q35-true">Verdadeiro</label>
+            <input type="radio" id="q35-false" name="q35" value="false">
+            <label for="q35-false">Falso</label>
+        </div>
+        <button onclick="checkAnswer(35, 'true')">Responder</button>
+        <div id="result-35" class="result"></div>
+    </div>
+
+    <!-- Restante das questões até 100 -->
+<!-- Pergunta 36 -->
+<div id="question-36" class="question">
+    <p>36. O ciclo menstrual é controlado pelos hormônios LH, FSH, estrógeno e progesterona.</p>
+    <div class="answer-options">
+        <input type="radio" id="q36-true" name="q36" value="true">
+        <label for="q36-true">Verdadeiro</label>
+        <input type="radio" id="q36-false" name="q36" value="false">
+        <label for="q36-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(36, 'true')">Responder</button>
+    <div id="result-36" class="result"></div>
+</div>
+
+<!-- Pergunta 37 -->
+<div id="question-37" class="question">
+    <p>37. A ovulação ocorre durante a fase luteínica do ciclo menstrual.</p>
+    <div class="answer-options">
+        <input type="radio" id="q37-true" name="q37" value="true">
+        <label for="q37-true">Verdadeiro</label>
+        <input type="radio" id="q37-false" name="q37" value="false">
+        <label for="q37-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(37, 'false')">Responder</button>
+    <div id="result-37" class="result"></div>
+</div>
+
+<!-- Pergunta 38 -->
+<div id="question-38" class="question">
+    <p>38. O hormônio FSH é responsável por estimular a produção de óvulos nos ovários.</p>
+    <div class="answer-options">
+        <input type="radio" id="q38-true" name="q38" value="true">
+        <label for="q38-true">Verdadeiro</label>
+        <input type="radio" id="q38-false" name="q38" value="false">
+        <label for="q38-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(38, 'true')">Responder</button>
+    <div id="result-38" class="result"></div>
+</div>
+
+<!-- Pergunta 39 -->
+<div id="question-39" class="question">
+    <p>39. A fase luteínica do ciclo menstrual ocorre após a ovulação.</p>
+    <div class="answer-options">
+        <input type="radio" id="q39-true" name="q39" value="true">
+        <label for="q39-true">Verdadeiro</label>
+        <input type="radio" id="q39-false" name="q39" value="false">
+        <label for="q39-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(39, 'true')">Responder</button>
+    <div id="result-39" class="result"></div>
+</div>
+
+<!-- Pergunta 40 -->
+<div id="question-40" class="question">
+    <p>40. O LH (hormônio luteinizante) é responsável por induzir a ovulação.</p>
+    <div class="answer-options">
+        <input type="radio" id="q40-true" name="q40" value="true">
+        <label for="q40-true">Verdadeiro</label>
+        <input type="radio" id="q40-false" name="q40" value="false">
+        <label for="q40-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(40, 'true')">Responder</button>
+    <div id="result-40" class="result"></div>
+</div>
+
+<!-- Pergunta 41 -->
+<div id="question-41" class="question">
+    <p>41. O folículo que libera o óvulo após a ovulação se torna o corpo lúteo.</p>
+    <div class="answer-options">
+        <input type="radio" id="q41-true" name="q41" value="true">
+        <label for="q41-true">Verdadeiro</label>
+        <input type="radio" id="q41-false" name="q41" value="false">
+        <label for="q41-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(41, 'true')">Responder</button>
+    <div id="result-41" class="result"></div>
+</div>
+
+<!-- Pergunta 42 -->
+<div id="question-42" class="question">
+    <p>42. O ciclo menstrual é dividido em três fases: folicular, ovulatória e luteínica.</p>
+    <div class="answer-options">
+        <input type="radio" id="q42-true" name="q42" value="true">
+        <label for="q42-true">Verdadeiro</label>
+        <input type="radio" id="q42-false" name="q42" value="false">
+        <label for="q42-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(42, 'true')">Responder</button>
+    <div id="result-42" class="result"></div>
+</div>
+
+<!-- Pergunta 43 -->
+<div id="question-43" class="question">
+    <p>43. O ciclo menstrual é regular e ocorre de forma idêntica em todas as mulheres.</p>
+    <div class="answer-options">
+        <input type="radio" id="q43-true" name="q43" value="true">
+        <label for="q43-true">Verdadeiro</label>
+        <input type="radio" id="q43-false" name="q43" value="false">
+        <label for="q43-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(43, 'false')">Responder</button>
+    <div id="result-43" class="result"></div>
+</div>
+
+<!-- Pergunta 44 -->
+<div id="question-44" class="question">
+    <p>44. Durante a fase luteínica, a secreção de progesterona prepara o útero para uma possível gestação.</p>
+    <div class="answer-options">
+        <input type="radio" id="q44-true" name="q44" value="true">
+        <label for="q44-true">Verdadeiro</label>
+        <input type="radio" id="q44-false" name="q44" value="false">
+        <label for="q44-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(44, 'true')">Responder</button>
+    <div id="result-44" class="result"></div>
+</div>
+
+<!-- Pergunta 45 -->
+<div id="question-45" class="question">
+    <p>45. Se não houver fecundação, o corpo lúteo degenera e o ciclo menstrual se reinicia.</p>
+    <div class="answer-options">
+        <input type="radio" id="q45-true" name="q45" value="true">
+        <label for="q45-true">Verdadeiro</label>
+        <input type="radio" id="q45-false" name="q45" value="false">
+        <label for="q45-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(45, 'true')">Responder</button>
+    <div id="result-45" class="result"></div>
+</div>
+
+<!-- Pergunta 46 -->
+<div id="question-46" class="question">
+    <p>46. O fluxo menstrual ocorre devido à descamação do endométrio, que ocorre quando não há fecundação.</p>
+    <div class="answer-options">
+        <input type="radio" id="q46-true" name="q46" value="true">
+        <label for="q46-true">Verdadeiro</label>
+        <input type="radio" id="q46-false" name="q46" value="false">
+        <label for="q46-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(46, 'true')">Responder</button>
+    <div id="result-46" class="result"></div>
+</div>
+
+<!-- Pergunta 47 -->
+<div id="question-47" class="question">
+    <p>47. A menstruação é a parte final do ciclo menstrual.</p>
+    <div class="answer-options">
+        <input type="radio" id="q47-true" name="q47" value="true">
+        <label for="q47-true">Verdadeiro</label>
+        <input type="radio" id="q47-false" name="q47" value="false">
+        <label for="q47-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(47, 'true')">Responder</button>
+    <div id="result-47" class="result"></div>
+</div>
+
+<!-- Pergunta 48 -->
+<div id="question-48" class="question">
+    <p>48. Durante o ciclo menstrual, a ovulação ocorre antes da menstruação.</p>
+    <div class="answer-options">
+        <input type="radio" id="q48-true" name="q48" value="true">
+        <label for="q48-true">Verdadeiro</label>
+        <input type="radio" id="q48-false" name="q48" value="false">
+        <label for="q48-false">Falso</label>
+    </div>
+    <button onclick="checkAnswer(48, 'true')">Responder</button>
+    <div id="result-48" class="result"></div>
+</div>
+
+    <script>
+        function checkAnswer(questionNumber, correctAnswer) {
+            const selectedOption = document.querySelector(`input[name="q${questionNumber}"]:checked`);
+            const resultDiv = document.getElementById(`result-${questionNumber}`);
+
+            if (!selectedOption) {
+                resultDiv.innerHTML = "Por favor, selecione uma resposta!";
+                return;
+            }
+
+            const selectedValue = selectedOption.value;
+
+            if (selectedValue === correctAnswer) {
+                resultDiv.innerHTML = "Resposta correta!";
+                resultDiv.style.color = "green";
+            } else {
+                resultDiv.innerHTML = "Resposta incorreta. Tente novamente.";
+                resultDiv.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>

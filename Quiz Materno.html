@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Interativo</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<style>
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+#quiz-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 80%;
+    max-width: 500px;
+    text-align: center;
+}
+#question {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+#options {
+    list-style-type: none;
+    padding: 0;
+}
+#options li {
+    background-color: #f1f1f1;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+#options li:hover {
+    background-color: #d6d6d6;
+}
+#options li.selected {
+    background-color: #4caf50;
+    color: white;
+}
+.alert {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    margin-top: 20px;
+    border-radius: 5px;
+    display: none;
+}
+button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 20px;
+}
+button:hover {
+    background-color: #45a049;
+}   
+        </style>
+<body>
+    <div class="quiz-container" id="quiz-container">
+        <h1>Quiz Interativo</h1>
+        <div id="question-container">
+        </div>
+        <button id="next-button" onclick="nextQuestion()">Próxima Pergunta</button>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+
+        const quizQuestions = [
+            { question: "Quando termina a infância?", options: ["Ao início da puberdade", "Na adolescência", "Na vida adulta", "Na velhice"], correctAnswer: 0 },
+            { question: "O que marca o início da puberdade?", options: ["Aparecimento dos caracteres sexuais secundários", "O aumento de altura", "Mudança na voz", "Início da menstruação"], correctAnswer: 0 },
+            { question: "Cite uma característica sexual secundária que surge na puberdade.", options: ["Desenvolvimento das mamas", "Aumento do apetite", "Crescimento dos pelos nas mãos", "Aumento da musculatura"], correctAnswer: 0 },
+            { question: "Qual hormônio influencia o surgimento dos pelos pubianos?", options: ["Estrogênio", "Testosterona", "Progesterona", "Prolactina"], correctAnswer: 0 },
+            { question: "O que significa menarca?", options: ["Primeira menstruação", "Primeiro sexo", "Primeira ovulação", "Primeiro dia de gravidez"], correctAnswer: 0 },
+            { question: "A puberdade é um processo...", options: ["Natural", "Artificial", "Tecnológico", "Químico"], correctAnswer: 0 },
+            { question: "O aumento da altura ocorre em qual fase?", options: ["Puberdade", "Infância", "Adolescência", "Idade adulta"], correctAnswer: 0 },
+            { question: "Na adolescência, o aumento do peso é mais comum em...", options: ["Meninas", "Meninos", "Ambos igualmente", "Nenhum dos dois"], correctAnswer: 0 },
+            { question: "O que caracteriza o fim da puberdade?", options: ["Aumento da capacidade reprodutiva", "Desenvolvimento completo dos órgãos sexuais", "Primeira relação sexual", "Desenvolvimento de pelos na face"], correctAnswer: 1 },
+            { question: "A menstruação é um evento típico de qual fase?", options: ["Puberdade", "Menopausa", "Adolescência", "Idade adulta"], correctAnswer: 0 },
+            { question: "Qual é a fase da adolescência onde ocorrem maiores transformações hormonais?", options: ["Início", "Meio", "Final", "Não há diferença"], correctAnswer: 0 },
+            { question: "Em qual fase o corpo humano desenvolve a maior quantidade de testosterona?", options: ["Puberdade", "Adolescência", "Infância", "Idade adulta"], correctAnswer: 1 },
+            { question: "O que acontece durante a puberdade nas meninas?", options: ["Desenvolvimento das mamas", "Desenvolvimento muscular", "Desenvolvimento de pelos faciais", "Aumento de altura"], correctAnswer: 0 },
+            { question: "O que caracteriza a adolescência?", options: ["Crescimento físico", "Independência financeira", "Aumento de responsabilidade", "Nenhuma das anteriores"], correctAnswer: 0 },
+            { question: "A adolescência começa com a...", options: ["Puberdade", "Maturidade", "Independência", "Capacidade reprodutiva"], correctAnswer: 0 },
+            { question: "Em que idade a menarca normalmente ocorre?", options: ["10 a 15 anos", "16 a 20 anos", "5 a 9 anos", "21 a 25 anos"], correctAnswer: 0 },
+            { question: "A menstruação ocorre devido ao...", options: ["Rejeição do óvulo não fecundado", "Início da gravidez", "Fim da puberdade", "Início da menopausa"], correctAnswer: 0 },
+            { question: "Quais são os principais hormônios envolvidos na puberdade?", options: ["Estrogênio e testosterona", "Prolactina e dopamina", "Insulina e glucagon", "Adrenalina e noradrenalina"], correctAnswer: 0 },
+            { question: "O que caracteriza a fase da adolescência?", options: ["Mudanças físicas e emocionais", "Crescimento muscular", "Início da menopausa", "Cicatrização de feridas"], correctAnswer: 0 },
+            { question: "A puberdade é marcada por...", options: ["Alterações hormonais", "Mudanças no comportamento", "Aumento da altura", "Todas as anteriores"], correctAnswer: 3 },
+            { question: "A adolescência é uma fase...", options: ["De autodescoberta e amadurecimento", "De plena independência", "De aumento da responsabilidade financeira", "De estabilidade emocional"], correctAnswer: 0 },
+            { question: "Durante a puberdade, o corpo começa a...", options: ["Se tornar fisicamente mais maduro", "Envelhecer rapidamente", "Perder massa muscular", "Ganhar peso rapidamente"], correctAnswer: 0 },
+            { question: "A puberdade é o período de...", options: ["Transformação física e emocional", "Crescimento físico apenas", "Aumento da altura e peso", "Mudança na voz apenas"], correctAnswer: 0 },
+            { question: "O que é a adolescência?", options: ["Fase de transição entre infância e vida adulta", "Fase da vida adulta", "Fase de envelhecimento", "Fase de independência financeira"], correctAnswer: 0 },
+            { question: "Qual hormônio é responsável pela voz grave nos meninos?", options: ["Testosterona", "Estrogênio", "Prolactina", "Progesterona"], correctAnswer: 0 },
+            { question: "O crescimento dos pelos faciais nos meninos ocorre em qual fase?", options: ["Puberdade", "Infância", "Adolescência", "Idade adulta"], correctAnswer: 0 },
+            { question: "A adolescência é caracterizada principalmente por...", options: ["Mudanças hormonais", "Crescimento constante", "Maior responsabilidade", "Autonomia financeira"], correctAnswer: 0 },
+            { question: "Quais são os tipos de desenvolvimento físico que ocorrem na puberdade?", options: ["Desenvolvimento dos órgãos sexuais e aumento da altura", "Aumento da gordura corporal", "Perda de peso", "Nenhuma das anteriores"], correctAnswer: 0 },
+            { question: "A puberdade é iniciada por...", options: ["Alterações hormonais", "O aumento de altura", "Desenvolvimento muscular", "Mudança de voz"], correctAnswer: 0 },
+            { question: "A menstruação tem início quando?", options: ["Após a menarca", "Após a gravidez", "Após o desenvolvimento de pelos pubianos", "Após a primeira relação sexual"], correctAnswer: 0 },
+            { question: "Durante a puberdade, o corpo se prepara para...", options: ["A reprodução", "A gestação", "O envelhecimento", "A menopausa"], correctAnswer: 0 },
+            { question: "A puberdade geralmente começa por volta de qual idade?", options: ["10 a 14 anos", "15 a 18 anos", "5 a 9 anos", "20 a 25 anos"], correctAnswer: 0 },
+            { question: "O aumento da massa muscular é mais evidente em...", options: ["Meninos", "Meninas", "Ambos igualmente", "Nenhum dos dois"], correctAnswer: 0 },
+            { question: "Durante a puberdade, o corpo passa por...", options: ["Mudanças físicas e emocionais", "Mudanças hormonais", "Mudanças apenas emocionais", "Mudanças apenas físicas"], correctAnswer: 0 },
+            { question: "Na puberdade, ocorre o aumento da produção de...", options: ["Hormônios sexuais", "Hormônios do crescimento", "Hormônios digestivos", "Hormônios metabólicos"], correctAnswer: 0 },
+            { question: "A adolescência é caracterizada pela...", options: ["Formação de identidade", "Autonomia financeira", "Estabilidade emocional", "Crescimento físico"], correctAnswer: 0 },
+            { question: "O que causa a acne na adolescência?", options: ["Alterações hormonais", "Mudanças na dieta", "Alteração da pressão arterial", "Mudança no sono"], correctAnswer: 0 },
+            { question: "Quais são os principais sinais da puberdade?", options: ["Mudança de voz e desenvolvimento sexual", "Aumento de peso", "Crescimento dos pelos faciais", "Crescimento de cabelo no peito"], correctAnswer: 0 },
+            { question: "Qual é o papel da testosterona na puberdade?", options: ["Desenvolver os caracteres sexuais masculinos", "Aumentar a produção de leite", "Reduzir o apetite", "Crescer a massa muscular"], correctAnswer: 0 },
+            { question: "A puberdade feminina é marcada por...", options: ["Aparecimento da menarca", "Desenvolvimento de pelos faciais", "Alteração de voz", "Mudanças musculares"], correctAnswer: 0 },
+            { question: "Os primeiros sinais da puberdade nos meninos incluem...", options: ["Crescimento da laringe e aumento de altura", "Menstruação e aumento da gordura corporal", "Desenvolvimento de cabelo nas axilas", "Mudança de humor"], correctAnswer: 0 },
+            { question: "O aumento da produção de estrogênio nas meninas leva a...", options: ["Desenvolvimento das mamas", "Aumento do apetite", "Aumento da altura", "Aumento da massa muscular"], correctAnswer: 0 },
+            { question: "Qual das alternativas descreve uma mudança comum na adolescência?", options: ["Mudanças emocionais e físicas", "Mudança da cor da pele", "Mudança no apetite sem razão", "Mudança de altura sem explicação"], correctAnswer: 0 },
+            { question: "O início da puberdade nos meninos é geralmente entre os...", options: ["10 e 14 anos", "12 e 16 anos", "5 e 9 anos", "16 e 20 anos"], correctAnswer: 0 },
+            { question: "Na adolescência, os meninos começam a produzir mais...", options: ["Testosterona", "Estrogênio", "Progesterona", "Prolactina"], correctAnswer: 0 },
+            { question: "Na adolescência, as meninas começam a produzir mais...", options: ["Estrogênio", "Testosterona", "Prolactina", "Progesterona"], correctAnswer: 0 },
+            { question: "Os hormônios envolvidos no processo puberal são produzidos principalmente...", options: ["Nas glândulas sexuais", "No cérebro", "Nos ossos", "Nos músculos"], correctAnswer: 0 },
+            { question: "A produção de estrogênio nas meninas é responsável pelo...", options: ["Desenvolvimento das mamas", "Aumento do apetite", "Aumento da altura", "Desenvolvimento muscular"], correctAnswer: 0 },
+            { question: "Qual é o principal objetivo da puberdade?", options: ["Aperfeiçoamento das funções sexuais", "Aumento do peso corporal", "Melhoria da saúde mental", "Mudanças de humor"], correctAnswer: 0 },
+    { question: "Qual é o principal efeito da testosterona nos meninos?", options: ["Desenvolvimento das características sexuais secundárias", "Aumento da altura", "Desenvolvimento das mamas", "Aumento do peso corporal"], correctAnswer: 0 },
+    { question: "A puberdade é o processo que envolve a...", options: ["Transformação do corpo da criança em corpo adulto", "Crescimento físico contínuo", "Mudanças emocionais sem explicação", "Nenhuma das alternativas"], correctAnswer: 0 },
+    { question: "A primeira menstruação é chamada de...", options: ["Menarca", "Puberdade", "Menopausa", "Ovulação"], correctAnswer: 0 },
+    { question: "Qual é a idade comum para o início da puberdade nas meninas?", options: ["10 a 13 anos", "14 a 18 anos", "5 a 9 anos", "18 a 22 anos"], correctAnswer: 0 },
+    { question: "Durante a puberdade, o aumento da massa muscular é mais evidente em...", options: ["Meninos", "Meninas", "Ambos igualmente", "Nenhum dos dois"], correctAnswer: 0 },
+    { question: "A fase em que ocorrem as maiores mudanças emocionais é...", options: ["Adolescência", "Infância", "Idade adulta", "Envelhecimento"], correctAnswer: 0 },
+    { question: "O que caracteriza a puberdade feminina?", options: ["Aparecimento dos pelos pubianos e desenvolvimento das mamas", "Aumento da massa muscular", "Mudança de voz", "Desenvolvimento de pelos faciais"], correctAnswer: 0 },
+    { question: "Quais são os primeiros sinais da puberdade nos meninos?", options: ["Aparecimento de pelos faciais e aumento da voz", "Aparecimento de pelos pubianos e aumento da altura", "Desenvolvimento das mamas", "Mudança na pele"], correctAnswer: 1 },
+    { question: "Qual hormônio é responsável pelo aumento da voz nos meninos?", options: ["Testosterona", "Estrogênio", "Progesterona", "Prolactina"], correctAnswer: 0 },
+    { question: "Na puberdade, o corpo humano começa a...", options: ["Aumentar a produção de hormônios sexuais", "Envelhecer rapidamente", "Perder a massa muscular", "Diminuir de tamanho"], correctAnswer: 0 },
+    { question: "Qual característica define a adolescência?", options: ["Mudanças físicas e emocionais", "Aumento de peso", "Crescimento muscular", "Mudança na voz"], correctAnswer: 0 },
+    { question: "A puberdade pode ser desencadeada por...", options: ["Alterações hormonais", "Falta de alimentação", "Falta de exercício", "Exposição ao sol"], correctAnswer: 0 },
+    { question: "A produção de estrogênio nas meninas é responsável por...", options: ["Desenvolvimento das mamas", "Aumento da altura", "Desenvolvimento da musculatura", "Mudança de voz"], correctAnswer: 0 },
+    { question: "Durante a puberdade, qual é o impacto das mudanças hormonais?", options: ["Mudanças físicas, emocionais e psicológicas", "Aumento de altura sem mudanças emocionais", "Crescimento muscular sem alterações hormonais", "Nenhuma mudança significativa"], correctAnswer: 0 },
+    { question: "A adolescência é considerada uma fase de...", options: ["Mudança e transição", "Consolidação de conhecimentos", "Redução de hormônios", "Maior estabilidade emocional"], correctAnswer: 0 },
+    { question: "A acne na adolescência é causada principalmente por...", options: ["Mudanças hormonais", "Higiene inadequada", "Estresse", "Fatores genéticos"], correctAnswer: 0 },
+    { question: "Qual fator influencia o crescimento de pelos pubianos?", options: ["Testosterona e estrogênio", "Cálcio e ferro", "Carboidratos e lipídios", "Proteínas e vitaminas"], correctAnswer: 0 },
+    { question: "Na adolescência, o que é mais comum nos meninos?", options: ["Aumento da produção de testosterona", "Aumento da produção de estrogênio", "Mudança do apetite", "Mudança do sono"], correctAnswer: 0 },
+    { question: "O que pode ocorrer com a voz dos meninos durante a puberdade?", options: ["Fica mais grave", "Fica mais aguda", "Fica inconstante", "Fica mais rápida"], correctAnswer: 0 },
+    { question: "O que caracteriza a fase final da puberdade?", options: ["A maturação dos órgãos sexuais e estabilidade hormonal", "Mudança da altura", "Desenvolvimento muscular", "Nenhuma alteração significativa"], correctAnswer: 0 },
+    { question: "Em que fase os meninos começam a desenvolver pelos faciais?", options: ["Na puberdade", "Na adolescência", "Na infância", "Na velhice"], correctAnswer: 0 },
+    { question: "Na adolescência, o corpo feminino sofre mudanças como...", options: ["Desenvolvimento das mamas", "Desenvolvimento de músculos faciais", "Aumento de pelos faciais", "Perda de peso"], correctAnswer: 0 },
+    { question: "Durante a puberdade, a produção de hormônios sexuais no corpo feminino aumenta, causando...", options: ["O crescimento das mamas e a menstruação", "Mudança da altura e crescimento muscular", "Mudança na voz e no apetite", "Nenhuma mudança"], correctAnswer: 0 },
+    { question: "Em que fase as meninas começam a produzir mais estrogênio?", options: ["Na puberdade", "Na infância", "Na adolescência", "Na vida adulta"], correctAnswer: 0 },
+    { question: "Na adolescência, a produção de hormônios sexuais leva ao desenvolvimento...", options: ["De características sexuais secundárias", "De musculatura", "De altura", "De velocidade"], correctAnswer: 0 },
+    { question: "A mudança do corpo masculino durante a puberdade envolve...", options: ["Crescimento muscular e desenvolvimento de pelos faciais", "Aumento da produção de leite", "Mudança no tamanho dos ossos", "Perda de altura"], correctAnswer: 0 },
+    { question: "A puberdade é considerada a fase que marca...", options: ["O início da maturação sexual", "O fim do crescimento", "A perda de capacidades físicas", "A fase de envelhecimento"], correctAnswer: 0 },
+    { question: "O que marca o fim da puberdade nas meninas?", options: ["Estabilidade hormonal e desenvolvimento completo dos órgãos sexuais", "Aumento de altura", "Desenvolvimento muscular", "Mudança de voz"], correctAnswer: 0 },
+    { question: "A primeira ejaculação ocorre geralmente em...", options: ["Na puberdade", "Na infância", "Na adolescência", "Na vida adulta"], correctAnswer: 0 },
+    { question: "Qual mudança ocorre nas meninas durante a puberdade?", options: ["Desenvolvimento das mamas", "Mudança na voz", "Aumento da produção de testosterona", "Mudança na pele"], correctAnswer: 0 },
+    { question: "Em que fase ocorre o maior aumento de altura?", options: ["Puberdade", "Infância", "Idade adulta", "Nenhuma das alternativas"], correctAnswer: 0 },
+    { question: "O que causa o aumento de altura durante a puberdade?", options: ["Crescimento ósseo", "Crescimento muscular", "Aumento da produção de hormônios", "Desenvolvimento de pelos"], correctAnswer: 0 },
+    { question: "Na adolescência, o aumento da musculatura é mais evidente em...", options: ["Meninos", "Meninas", "Ambos igualmente", "Nenhum dos dois"], correctAnswer: 0 },
+    { question: "Quando a puberdade geralmente termina nas meninas?", options: ["Por volta dos 16 a 18 anos", "Por volta dos 20 a 22 anos", "Por volta dos 10 a 12 anos", "Por volta dos 30 a 35 anos"], correctAnswer: 0 },
+    { question: "A acne é mais comum em qual fase?", options: ["Puberdade", "Infância", "Idade adulta", "Envelhecimento"], correctAnswer: 0 },
+    { question: "Na puberdade, o que acontece com o apetite?", options: ["Aumenta", "Diminui", "Fica estável", "Não muda"], correctAnswer: 0 },
+    { question: "A puberdade no corpo humano pode ser definida como...", options: ["Transformação de uma criança em um adulto fisicamente maduro", "Aumento de peso", "Mudança na cor da pele", "Crescimento muscular sem ganho de altura"], correctAnswer: 0 },
+    { question: "O que é a menarca?", options: ["Primeira menstruação", "Fim da puberdade", "Crescimento de pelos faciais", "Aumento de altura"], correctAnswer: 0 },
+    { question: "O que caracteriza o início da puberdade?", options: ["Desenvolvimento das características sexuais secundárias", "Mudança na voz", "Aumento de altura", "Mudança no apetite"], correctAnswer: 0 },
+    { question: "A fase final da puberdade é marcada pelo...", options: ["Desenvolvimento completo dos órgãos sexuais", "Aumento da altura", "Aumento da massa muscular", "Mudança da voz"], correctAnswer: 0 },
+    { question: "O que caracteriza o início da adolescência?", options: ["Mudanças físicas e hormonais", "Independência financeira", "Mudanças emocionais", "Crescimento intelectual"], correctAnswer: 0 },
+    { question: "Qual hormônio é responsável pelo crescimento dos pelos faciais nos meninos?", options: ["Testosterona", "Estrogênio", "Progesterona", "Prolactina"], correctAnswer: 0 },
+    { question: "A puberdade marca a transição entre...", options: ["Infância e idade adulta", "Adolescência e vida adulta", "Vida adulta e velhice", "Nenhuma das alternativas"], correctAnswer: 0 },
+    { question: "Em que fase da puberdade as mudanças físicas começam a ser mais evidentes?", options: ["Na adolescência", "Na infância", "Na velhice", "Na idade adulta"], correctAnswer: 0 },
+    { question: "Na puberdade, o aumento da altura é mais acentuado em...", options: ["Meninas", "Meninos", "Ambos igualmente", "Nenhum dos dois"], correctAnswer: 0 },
+    { question: "Durante a puberdade, o crescimento ósseo é mais rápido nos...", options: ["Meninos", "Meninas", "Ambos igualmente", "Nenhum dos dois"], correctAnswer: 0 }
+];
+let currentQuestion = 0;
+let correctAnswers = 0;
+
+// embaralha um array de opções
+function shuffleOptions(options) {
+  for (let i = options.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [options[i], options[j]] = [options[j], options[i]];
+  }
+  return options;
+}
+
+function displayQuestion() {
+  const questionData = quizQuestions[currentQuestion];
+  const container = document.getElementById('question-container');
+  const shuffled = shuffleOptions([...questionData.options]);
+
+  container.innerHTML = `
+    <p id="question">${questionData.question}</p>
+    <ul id="options">
+      ${shuffled.map((opt, i) => `<li onclick="selectAnswer(this, '${opt}')">${opt}</li>`).join('')}
+    </ul>
+    <div class="alert" id="feedback"></div>
+  `;
+}
+
+function selectAnswer(liElement, chosenText) {
+  const data = quizQuestions[currentQuestion];
+  const correctText = data.options[data.correctAnswer];
+  const feedback = document.getElementById('feedback');
+
+  // remove classes anteriores
+  document.querySelectorAll('#options li').forEach(li => li.classList.remove('selected','wrong'));
+
+  if (chosenText === correctText) {
+    liElement.classList.add('selected');
+    feedback.textContent = '✅ Correto!';
+    correctAnswers++;
+  } else {
+    liElement.classList.add('wrong');
+    feedback.textContent = '❌ Errado!';
+  }
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion < quizQuestions.length) {
+    displayQuestion();
+  } else {
+    const container = document.getElementById('quiz-container');
+    container.innerHTML = `
+      <h2>Quiz finalizado!</h2>
+      <p>Você acertou ${correctAnswers} de ${quizQuestions.length} perguntas.</p>
+      <button onclick="location.reload()">Refazer quiz</button>
+    `;
+  }
+}
+
+// chame displayQuestion() depois de definir quizQuestions
+displayQuestion();
+
+        </script>
+</body>
+</html>
+

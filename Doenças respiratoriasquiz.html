@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quiz de Doenças Respiratórias</title>
+  <style>
+
+
+
+
+
+
+
+
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e0f7fa;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #00796b;
+    }
+    #question-container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+    #answer-buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    button {
+      background-color: #009688;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00796b;
+    }
+    #result {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    #final-message {
+      font-size: 22px;
+      margin-top: 20px;
+      color: #004d40;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Quiz de Doenças Respiratórias</h1>
+
+<div id="question-container">
+  <div id="question"></div>
+  <div id="answer-buttons"></div>
+  <div id="result"></div>
+  <button id="next-button" style="display:none;" onclick="nextQuestion()">Próximo</button>
+</div>
+
+<div id="final-message"></div>
+
+<script>
+// Lista de questões
+const questions = [
+{ question: "1. Qual é o principal órgão do sistema respiratório?", answers: ["Coração", "Pulmão", "Fígado", "Rim"], correct: 1 },
+  { question: "2. Qual doença é causada pela infecção do vírus influenza?", answers: ["Gripe", "Tuberculose", "Asma", "Bronquite"], correct: 0 },
+  { question: "3. O que é asma?", answers: ["Infecção bacteriana", "Alergia que afeta os brônquios", "Problema cardíaco", "Infecção viral"], correct: 1 },
+  { question: "4. Principal sintoma da pneumonia:", answers: ["Dor no pé", "Tosse com catarro", "Dor de ouvido", "Coceira na pele"], correct: 1 },
+  { question: "5. A DPOC é uma doença:", answers: ["Aguda", "Crônica", "Infecciosa", "Viral"], correct: 1 },
+  { question: "6. A tuberculose é causada por:", answers: ["Vírus", "Bactéria", "Fungo", "Parasita"], correct: 1 },
+  { question: "7. A função principal dos alvéolos pulmonares é:", answers: ["Produzir muco", "Troca gasosa", "Gerar calor", "Defender contra vírus"], correct: 1 },
+  { question: "8. Qual exame é usado para diagnosticar tuberculose?", answers: ["Ultrassom", "Raio-X do tórax", "Eletrocardiograma", "Endoscopia"], correct: 1 },
+  { question: "9. Um sintoma clássico da asma é:", answers: ["Coceira", "Chiado no peito", "Dor abdominal", "Dor nas costas"], correct: 1 },
+  { question: "10. A bronquite afeta principalmente:", answers: ["Brônquios", "Coração", "Estômago", "Rins"], correct: 0 },
+  { question: "11. Principal fator de risco para DPOC:", answers: ["Excesso de açúcar", "Tabagismo", "Consumo de álcool", "Sedentarismo"], correct: 1 },
+  { question: "12. A respiração é controlada pelo:", answers: ["Fígado", "Cérebro", "Rins", "Intestino"], correct: 1 },
+  { question: "13. O que é enfisema pulmonar?", answers: ["Infecção dos brônquios", "Destruição dos alvéolos", "Aumento do muco nasal", "Infecção viral"], correct: 1 },
+  { question: "14. Qual exame mede a capacidade respiratória?", answers: ["Espirometria", "Ultrassonografia", "Eletroencefalograma", "Endoscopia"], correct: 0 },
+  { question: "15. A função das fossas nasais é:", answers: ["Aumentar o calor corporal", "Filtrar e umidificar o ar", "Produzir saliva", "Aumentar a pressão arterial"], correct: 1 },
+  { question: "16. Vacina BCG previne:", answers: ["Hepatite", "Tuberculose", "Gripe", "Pneumonia"], correct: 1 },
+  { question: "17. Tosse com catarro é sintoma de:", answers: ["Bronquite", "Otite", "Gastrite", "Conjuntivite"], correct: 0 },
+  { question: "18. A fibrose pulmonar causa:", answers: ["Endurecimento dos pulmões", "Infecção intestinal", "Problema renal", "Problema cardíaco"], correct: 0 },
+  { question: "19. A gripe pode ser evitada com:", answers: ["Vacinação", "Alimentação apenas", "Exercício físico apenas", "Antibióticos"], correct: 0 },
+  { question: "20. O ar chega aos pulmões através da:", answers: ["Traqueia", "Esôfago", "Aorta", "Veia cava"], correct: 0 },
+  { question: "21. A laringite afeta a:", answers: ["Fala", "Visão", "Digestão", "Audição"], correct: 0 },
+  { question: "22. A apneia do sono é caracterizada por:", answers: ["Paradas respiratórias durante o sono", "Excesso de tosse", "Febre alta", "Vômitos noturnos"], correct: 0 },
+  { question: "23. O pulmão direito possui quantos lobos?", answers: ["1", "2", "3", "4"], correct: 2 },
+  { question: "24. Principal forma de transmissão da tuberculose:", answers: ["Contato com pele", "Ar contaminado", "Água contaminada", "Contato sexual"], correct: 1 },
+  { question: "25. A pleurite é a inflamação da:", answers: ["Traqueia", "Pleura", "Brônquios", "Faringe"], correct: 1 },
+  { question: "26. Pessoas com asma devem evitar:", answers: ["Ar frio e ácaros", "Banho quente", "Água potável", "Comida saudável"], correct: 0 },
+  { question: "27. A espirometria avalia:", answers: ["Função cardíaca", "Função pulmonar", "Função renal", "Função hepática"], correct: 1 },
+  { question: "28. O uso prolongado de cigarro pode causar:", answers: ["Gripe", "DPOC", "Resfriado", "Alergia"], correct: 1 },
+  { question: "29. Sintoma comum na gripe:", answers: ["Dor de cabeça", "Dor no pé", "Dor no ombro", "Dor no ouvido"], correct: 0 },
+  { question: "30. A bronquiolite é mais comum em:", answers: ["Idosos", "Adultos", "Adolescentes", "Bebês"], correct: 3 },
+  { question: "31. Quem deve tomar a vacina contra a gripe?", answers: ["Somente idosos", "Somente adultos", "Crianças, adultos e idosos", "Somente crianças"], correct: 2 },
+  { question: "32. A tuberculose extrapulmonar pode afetar:", answers: ["Somente o coração", "Somente o fígado", "Vários órgãos", "Somente o intestino"], correct: 2 },
+  { question: "33. Qual exame confirma pneumonia?", answers: ["Eletrocardiograma", "Raio-X do tórax", "Endoscopia", "Ultrassom"], correct: 1 },
+  { question: "34. A rinite alérgica causa:", answers: ["Dor de ouvido", "Espirros e coriza", "Dor nas costas", "Tosse com sangue"], correct: 1 },
+  { question: "35. O sistema respiratório inclui:", answers: ["Faringe", "Estômago", "Coração", "Intestino"], correct: 0 },
+  { question: "36. A principal causa de câncer de pulmão é:", answers: ["Exposição solar", "Tabagismo", "Alimentação", "Poluição sonora"], correct: 1 },
+  { question: "37. A traqueia se divide em dois:", answers: ["Alvéolos", "Brônquios", "Vasos sanguíneos", "Lóbulos"], correct: 1 },
+  { question: "38. As vias respiratórias superiores incluem:", answers: ["Brônquios", "Fossas nasais", "Alvéolos", "Pulmões"], correct: 1 },
+  { question: "39. A bronquite aguda geralmente é causada por:", answers: ["Vírus", "Bactéria", "Fungo", "Parasita"], correct: 0 },
+  { question: "40. Qual estrutura impede a entrada de alimento nas vias aéreas?", answers: ["Laringe", "Epiglote", "Traqueia", "Esôfago"], correct: 1 },
+  { question: "41. A gripe comum é causada por:", answers: ["Bactéria", "Vírus", "Fungo", "Parasita"], correct: 1 },
+  { question: "42. Em casos de fibrose pulmonar:", answers: ["O pulmão fica mais flexível", "O pulmão endurece", "A respiração melhora", "O sangue se oxigena melhor"], correct: 1 },
+  { question: "43. A prevenção da tuberculose envolve:", answers: ["Uso de máscara", "Exercício físico", "Ingestão de vitaminas", "Exposição solar"], correct: 0 },
+  { question: "44. Um sintoma comum da DPOC é:", answers: ["Respiração ofegante", "Dor nas pernas", "Visão turva", "Formigamento nas mãos"], correct: 0 },
+  { question: "45. A bronquite crônica é:", answers: ["De curta duração", "De longa duração", "Sem sintomas", "Totalmente curável"], correct: 1 },
+  { question: "46. Tuberculose é transmitida por:", answers: ["Contato com sangue", "Ar contaminado", "Água contaminada", "Picada de inseto"], correct: 1 },
+  { question: "47. A fibrose pulmonar idiopática é:", answers: ["Tem causa desconhecida", "Causada por vírus", "Causada por fungos", "Causada por bactérias"], correct: 0 },
+  { question: "48. A apneia do sono pode levar a:", answers: ["Diabetes tipo 2", "Insônia permanente", "Infecções de pele", "Artrite"], correct: 0 },
+  { question: "49. Principal sintoma da tuberculose pulmonar:", answers: ["Dor de cabeça", "Tosse com sangue", "Dor de garganta", "Coceira na pele"], correct: 1 },
+  { question: "50. A vacinação contra pneumonia é recomendada para:", answers: ["Somente crianças", "Somente idosos", "Crianças e idosos", "Adultos jovens apenas"], correct: 2 }
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function showQuestion() {
+  const questionElement = document.getElementById('question');
+  const answerButtons = document.getElementById('answer-buttons');
+  const resultElement = document.getElementById('result');
+  const nextButton = document.getElementById('next-button');
+
+  resultElement.innerText = '';
+  nextButton.style.display = 'none';  // Esconde o botão "Próximo" no início
+  answerButtons.innerHTML = '';
+
+  questionElement.innerText = questions[currentQuestion].question;
+
+  questions[currentQuestion].answers.forEach((answer, index) => {
+    const button = document.createElement('button');
+    button.innerText = answer;
+    button.addEventListener('click', () => selectAnswer(index));
+    answerButtons.appendChild(button);
+  });
+}
+
+function selectAnswer(selectedIndex) {
+  const resultElement = document.getElementById('result');
+  const nextButton = document.getElementById('next-button');
+  const correctAnswerIndex = questions[currentQuestion].correct;
+  const correctAnswer = questions[currentQuestion].answers[correctAnswerIndex];
+
+  // Exibe a resposta correta se a pessoa errar
+  if (selectedIndex === correctAnswerIndex) {
+    score++;
+    resultElement.innerText = '✅ Resposta correta!';
+    resultElement.style.color = 'green';
+  } else {
+    resultElement.innerText = `❌ Resposta incorreta! A resposta correta é: ${correctAnswer}`;
+    resultElement.style.color = 'red';
+  }
+
+  nextButton.style.display = 'inline-block';  // Exibe o botão "Próximo"
+}
+
+function nextQuestion() {
+  const resultElement = document.getElementById('result');
+  const nextButton = document.getElementById('next-button');
+
+  resultElement.innerText = '';  // Limpa o resultado da resposta anterior
+  nextButton.style.display = 'none';  // Esconde o botão "Próximo" até a próxima pergunta
+
+  currentQuestion++;
+  if (currentQuestion < questions.length) {
+    showQuestion();
+  } else {
+    showFinalMessage();
+  }
+}
+
+function showFinalMessage() {
+  const questionContainer = document.getElementById('question-container');
+  const finalMessage = document.getElementById('final-message');
+
+  questionContainer.style.display = 'none';
+  finalMessage.innerHTML = `Você acertou <strong>${score}</strong> de <strong>${questions.length}</strong> perguntas! 🎉`;
+}
+
+showQuestion();
+</script>
+
+</body>
+</html>
+
